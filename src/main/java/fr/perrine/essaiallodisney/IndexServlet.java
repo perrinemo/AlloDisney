@@ -41,7 +41,6 @@ public class IndexServlet extends HttpServlet {
                     movieModel.setId(resultSet.getInt("id"));
                     movieModel.setTitle(resultSet.getString("title"));
                     movieModel.setYear(resultSet.getInt("year"));
-                    movieModel.setDuration(resultSet.getString("duration"));
                     movieModel.setResume(resultSet.getString("resume"));
                     models.add(movieModel);
             }
