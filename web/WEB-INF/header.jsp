@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">
         <img src="img/disney.png" width="60" height="50" class="d-inline-block" alt="logo" />
@@ -17,6 +19,11 @@
 
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav ml-auto">
+            <c:if test="${!empty sessionScope}">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Ajouter un film</a>
+                </li>
+            </c:if>
             <li class="nav-item">
                 <a href="#" class="nav-link">Liste des films</a>
             </li>
@@ -30,6 +37,23 @@
 <div id="myModal" class="modal">
     <div class="modal-content col-5">
         <span class="close">&times;</span>
-        <h2>Vous êtes connecté !</h2>
+        <div class="modal-body">
+            <h2 id="title-popup">Se connecter à AlloDisney</h2>
+            <form method="post" action="${pageContext.request.contextPath}/index">
+                <div class="form-group">
+                    <input type="email" class="form-control" name="email" placeholder="Adresse email" />
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="Mot de passe" />
+                </div>
+                <p class="inscrit">
+                    <a href="#">Déjà inscrit ?</a>
+                </p>
+                <button type="submit"id="btn-connection" class="btn">Connexion</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <p>Pas encore inscrit ? <a href="#" id="inscription">S'inscrire maintenant</a></p>
+        </div>
     </div>
 </div>
