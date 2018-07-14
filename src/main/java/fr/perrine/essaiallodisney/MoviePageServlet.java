@@ -12,8 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-@WebServlet(name = "TestServlet", urlPatterns = "/test")
-public class TestServlet extends HttpServlet {
+@WebServlet(name = "MoviePageServlet", urlPatterns = "/moviepage")
+public class MoviePageServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -49,6 +49,6 @@ public class TestServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        this.getServletContext().getRequestDispatcher("/WEB-INF/test.jsp").forward(request, response);
+        this.getServletContext().getRequestDispatcher("/WEB-INF/moviepage.jsp").forward(request, response);
     }
 }
