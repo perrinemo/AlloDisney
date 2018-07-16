@@ -40,7 +40,6 @@ public class IndexServlet extends HttpServlet {
                     MovieModel movieModel = new MovieModel();
                     movieModel.setId(resultSet.getInt("id"));
                     movieModel.setTitle(resultSet.getString("title"));
-                    movieModel.setYear(resultSet.getInt("year"));
                     movieModel.setResume(resultSet.getString("resume"));
                     models.add(movieModel);
             }

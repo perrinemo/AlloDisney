@@ -32,7 +32,7 @@
                             ${movie.resume}
                         </p>
 
-                        <a href="${pageContext.request.contextPath}/test?id=${movie.id}" class="more">Plus d'infos</a>
+                        <a href="${pageContext.request.contextPath}/moviepage?id=${movie.id}" class="more">Plus d'infos</a>
                     </div>
                 </div>
             </c:forEach>

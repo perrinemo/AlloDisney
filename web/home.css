@@ -167,3 +167,27 @@ h3 {
 .reseaux {
     float: right;
 }
+
+/****************** MOVIE PAGE *****************/
+.movie-page {
+    margin: 50px auto;
+}
+
+.movie-page h1 {
+    text-align: center;
+    font-family: Disney;
+    margin-bottom: 50px;
+}
+
+.movie-page img {
+    float: left;
+    margin-right: 20px;
+}
+
+.movie-page p {
+    font-size: 20px;
+}
+
+.movie-page span {
+    font-weight: bold;
+}
