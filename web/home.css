@@ -19,6 +19,28 @@
 }
 
 /****************** POPUP **********************/
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+#btn-connection {
+    margin: 0 auto;
+}
+
+.close {
+    text-align: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.inscrit {
+    display: none;
+    text-align: right;
+}
+
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -33,29 +55,35 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+.modal-body {
+    padding-bottom: 50px;
+    text-align: center;
+}
+
 .modal-content {
     position: relative;
     background-color: #fefefe;
     margin: auto;
-    padding: 10px;
+    padding: 0;
     border: 1px solid #888;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     animation-name: animatetop;
-    animation-duration: 0.4s
+    animation-duration: 0.4s;
 }
 
-@keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:0; opacity:1}
+.modal-content form {
+    width: 80%;
+    margin: auto;
 }
 
-/* The Close Button */
-.close {
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.modal-footer {
+    background-color: #ecf0f1;
     text-align: right;
-    font-size: 28px;
-    font-weight: bold;
-    margin-top: 10px;
-    margin-right: 10px;
 }
 
 /****************** SLIDER *********************/
@@ -99,6 +127,7 @@
 }
 
 h3 {
+    padding-top: 10px;
     font-family: Disney;
     font-size: 2em;
 }
