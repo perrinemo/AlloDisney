@@ -21,7 +21,7 @@
         <ul class="navbar-nav ml-auto">
             <c:if test="${!empty sessionScope.user}">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Ajouter un film</a>
+                    <a href="${pageContext.request.contextPath}/addamovie" class="nav-link">Ajouter un film</a>
                 </li>
             </c:if>
             <li class="nav-item">
