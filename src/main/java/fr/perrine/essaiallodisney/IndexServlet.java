@@ -59,7 +59,7 @@ public class IndexServlet extends HttpServlet {
 
         try {
             PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
-                    .prepareStatement("SELECT * FROM movies");
+                    .prepareStatement("SELECT * FROM movies ORDER BY id DESC LIMIT 4");
             ResultSet resultSet = null;
             try {
                 resultSet = preparedStatement.executeQuery();

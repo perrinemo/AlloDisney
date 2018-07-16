@@ -9,7 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="${pageContext.request.contextPath}/index">
         <img src="img/disney.png" width="60" height="50" class="d-inline-block" alt="logo" />
         AlloDisney
     </a>
@@ -35,7 +35,7 @@
                 </c:when>
                 <c:otherwise>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" id="deconnexion">Se déconnecter</a>
+                        <a class="nav-link" href="<% session.invalidate(); %>" id="deconnexion">Se déconnecter</a>
                     </li>
                 </c:otherwise>
             </c:choose>
