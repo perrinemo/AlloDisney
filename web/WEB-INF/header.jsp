@@ -19,17 +19,27 @@
 
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav ml-auto">
-            <c:if test="${!empty sessionScope}">
+            <c:if test="${!empty sessionScope.user}">
                 <li class="nav-item">
                     <a href="#" class="nav-link">Ajouter un film</a>
                 </li>
             </c:if>
             <li class="nav-item">
-                <a href="#" class="nav-link">Liste des films</a>
+                <a href="${pageContext.request.contextPath}/listmovie" class="nav-link">Liste des films</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" id="connection">Se connecter / S'inscrire</a>
-            </li>
+            <c:choose>
+                <c:when test="${empty sessionScope.user}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="connection">Se connecter / S'inscrire</a>
+                    </li>
+                </c:when>
+                <c:otherwise>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="deconnexion">Se déconnecter</a>
+                    </li>
+                </c:otherwise>
+            </c:choose>
+
         </ul>
     </div>
 </nav>
@@ -41,19 +51,16 @@
             <h2 id="title-popup">Se connecter à AlloDisney</h2>
             <form method="post" action="${pageContext.request.contextPath}/index">
                 <div class="form-group">
-                    <input type="email" class="form-control" name="email" placeholder="Adresse email" />
+                    <input type="text" class="form-control" name="pseudo_connexion" placeholder="Pseudo" />
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" name="password" placeholder="Mot de passe" />
+                    <input type="password" class="form-control" name="password_connexion" placeholder="Mot de passe" />
                 </div>
-                <p class="inscrit">
-                    <a href="#">Déjà inscrit ?</a>
-                </p>
                 <button type="submit"id="btn-connection" class="btn">Connexion</button>
             </form>
         </div>
         <div class="modal-footer">
-            <p>Pas encore inscrit ? <a href="#" id="inscription">S'inscrire maintenant</a></p>
+            <p>Pas encore inscrit ? <a href="${pageContext.request.contextPath}/inscription" id="inscription">S'inscrire maintenant</a></p>
         </div>
     </div>
 </div>

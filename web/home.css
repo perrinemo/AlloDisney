@@ -36,11 +36,6 @@
     margin-right: 10px;
 }
 
-.inscrit {
-    display: none;
-    text-align: right;
-}
-
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -190,4 +185,18 @@ h3 {
 
 .movie-page span {
     font-weight: bold;
+}
+
+/****************** INSCRIPTION ****************/
+.inscription {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.inscription h2 {
+    margin-bottom: 20px;
+}
+
+#inscrit {
+    text-align: right;
 }

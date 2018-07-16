@@ -14,9 +14,9 @@
     <jsp:include page="/WEB-INF/header.jsp" />
 
     <div id="slider">
-        <a href="1"><img src="./img/disney1.jpg" alt="disney" /></a>
-        <a href="2"><img src="./img/disney2.jpg" alt="disney" /></a>
-        <a href="3"><img src="./img/disney3.jpg" alt="disney" /></a>
+        <a href="#"><img src="./img/disney1.jpg" alt="disney" /></a>
+        <a href="#"><img src="./img/disney2.jpg" alt="disney" /></a>
+        <a href="#"><img src="./img/disney3.jpg" alt="disney" /></a>
     </div>
 
     <div class="container">
