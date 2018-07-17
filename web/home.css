@@ -3,6 +3,15 @@
     src: url("fonts/waltograph42.otf");
 }
 
+body {
+    font-family: Quicksand, sans-serif;
+}
+
+h1 {
+    margin-bottom: 50px;
+    font-family: Disney;
+}
+
 /****************** NAVBAR *********************/
 .navbar-brand {
     font-family: Disney;
@@ -166,6 +175,11 @@ h3 {
 
 .reseaux {
     float: right;
+}
+
+.reseaux i {
+    margin: auto 10px;
+    color: #000;
 }
 
 /****************** MOVIE PAGE *****************/

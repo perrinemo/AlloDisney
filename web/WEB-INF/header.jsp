@@ -38,7 +38,7 @@
     <div class="modal-content col-5">
         <span class="close">&times;</span>
         <div class="modal-body">
-            <h2 id="title-popup">Se connecter à AlloDisney</h2>
+            <h1 id="title-popup">Se connecter à AlloDisney</h1>
             <form method="post" action="${pageContext.request.contextPath}/index">
                 <div class="form-group">
                     <input type="email" class="form-control" name="email" placeholder="Adresse email" />
