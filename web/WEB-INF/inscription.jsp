@@ -14,7 +14,7 @@
     <body>
         <jsp:include page="/WEB-INF/header.jsp" />
 
-        <div class="col-4 mx-auto inscription">
+        <div class="col-4 mx-auto inscription content">
             <h2>Je m'inscris :</h2>
             <form method="post" action="${pageContext.request.contextPath}/inscription">
                 <div class="form-group">
@@ -32,5 +32,7 @@
                 <button type="submit" class="btn">Inscription</button>
             </form>
         </div>
+
+        <jsp:include page="footer.jsp"/>
     </body>
 </html>

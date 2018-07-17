@@ -12,30 +12,31 @@
     <jsp:include page="/WEB-INF/head.jsp" />
 <body>
     <jsp:include page="/WEB-INF/header.jsp" />
+    <div class="content">
+        <div id="slider">
+            <a href="#"><img src="./img/disney1.jpg" alt="disney" /></a>
+            <a href="#"><img src="./img/disney2.jpg" alt="disney" /></a>
+            <a href="#"><img src="./img/disney3.jpg" alt="disney" /></a>
+        </div>
 
-    <div id="slider">
-        <a href="#"><img src="./img/disney1.jpg" alt="disney" /></a>
-        <a href="#"><img src="./img/disney2.jpg" alt="disney" /></a>
-        <a href="#"><img src="./img/disney3.jpg" alt="disney" /></a>
-    </div>
+        <div class="container">
+            <div class="row">
+                <c:forEach items="${requestScope.models}" var="movie">
+                    <div class="vignette">
+                        <img src="http://via.placeholder.com/200x280" alt="${movie.title}" />
+                        <div>
+                            <h3>${movie.title}</h3>
+                            <p>
+                                <span class="bold">Résumé :</span>
+                                <br />
+                                ${movie.resume}
+                            </p>
 
-    <div class="container">
-        <div class="row">
-            <c:forEach items="${requestScope.models}" var="movie">
-                <div class="vignette">
-                    <img src="http://via.placeholder.com/200x280" alt="${movie.title}" />
-                    <div>
-                        <h3>${movie.title}</h3>
-                        <p>
-                            <span class="bold">Résumé :</span>
-                            <br />
-                            ${movie.resume}
-                        </p>
-
-                        <a href="${pageContext.request.contextPath}/moviepage?id=${movie.id}" class="more">Plus d'infos</a>
+                            <a href="${pageContext.request.contextPath}/moviepage?id=${movie.id}" class="more">Plus d'infos</a>
+                        </div>
                     </div>
-                </div>
-            </c:forEach>
+                </c:forEach>
+            </div>
         </div>
     </div>
 

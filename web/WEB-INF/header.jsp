@@ -9,7 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="${pageContext.request.contextPath}/index">
         <img src="img/disney.png" width="60" height="50" class="d-inline-block" alt="logo" />
         AlloDisney
     </a>
@@ -21,7 +21,7 @@
         <ul class="navbar-nav ml-auto">
             <c:if test="${!empty sessionScope.user}">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Ajouter un film</a>
+                    <a href="${pageContext.request.contextPath}/addamovie" class="nav-link">Ajouter un film</a>
                 </li>
             </c:if>
             <li class="nav-item">
@@ -35,7 +35,7 @@
                 </c:when>
                 <c:otherwise>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" id="deconnexion">Se déconnecter</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/deconnexion" id="deconnexion" >Se déconnecter</a>
                     </li>
                 </c:otherwise>
             </c:choose>
@@ -48,7 +48,7 @@
     <div class="modal-content col-5">
         <span class="close">&times;</span>
         <div class="modal-body">
-            <h2 id="title-popup">Se connecter à AlloDisney</h2>
+            <h1 id="title-popup">Se connecter à AlloDisney</h1>
             <form method="post" action="${pageContext.request.contextPath}/index">
                 <div class="form-group">
                     <input type="text" class="form-control" name="pseudo_connexion" placeholder="Pseudo" />

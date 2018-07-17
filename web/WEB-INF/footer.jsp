@@ -11,9 +11,11 @@
         <i class="far fa-copyright"></i>
         AlloDisney 2018
         <span class="reseaux">
-            <a href="https://fr-fr.facebook.com/disneyfrance/"><i class="fab fa-facebook-square fa-2x"></i></a>
-            <a href="https://www.instagram.com/disney/?hl=fr"><i class="fab fa-instagram fa-2x"></i></a>
-            <a href="https://twitter.com/disneyfr"><i class="fab fa-twitter-square fa-2x"></i></a>
+            <a href="https://fr-fr.facebook.com/disneyfrance/"><i class="fab fa-facebook-f fa-2x"></i></a>
+            <a href="https://twitter.com/disneyfr"><i class="fab fa-twitter fa-2x"></i></a>
+            <a href="https://www.pinterest.com/disneyfrance"><i class="fab fa-pinterest-p fa-2x"></i></a>
+            <a href="https://www.instagram.com/disneyfr"><i class="fab fa-instagram fa-2x"></i></a>
+            <a href="https://www.youtube.com/user/waltdisneystudiosfr"><i class="fab fa-youtube fa-2x"></i></a>
         </span>
     </div>
 </footer>

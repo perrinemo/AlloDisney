@@ -3,6 +3,24 @@
     src: url("fonts/waltograph42.otf");
 }
 
+/****************** GENERAL ********************/
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Quicksand, sans-serif;
+}
+
+.content {
+    flex-grow: 1;
+}
+
+h1 {
+    margin-bottom: 50px;
+    font-family: Disney;
+    text-align: center;
+}
+
 /****************** NAVBAR *********************/
 .navbar-brand {
     font-family: Disney;
@@ -163,6 +181,11 @@ h3 {
     float: right;
 }
 
+.reseaux i {
+    margin: auto 10px;
+    color: #000;
+}
+
 /****************** MOVIE PAGE *****************/
 .movie-page {
     margin: 50px auto;
@@ -198,5 +221,16 @@ h3 {
 }
 
 #inscrit {
+    text-align: right;
+}
+
+/****************** ADD A MOVIE ****************/
+.form {
+    margin: 50px auto;
+    text-align: center;
+}
+
+.nb-char {
+    margin-top: 10px;
     text-align: right;
 }
