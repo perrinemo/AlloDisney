@@ -7,9 +7,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-    <jsp:include page="head.jsp"/>
+    <jsp:include page="/WEB-INF/head.jsp"/>
     <body>
-        <jsp:include page="header.jsp"/>
+        <jsp:include page="/WEB-INF/header.jsp"/>
 
         <script type="text/javascript">
             <!--
@@ -62,6 +62,6 @@
             maxlength_textarea('resume','reste_char',250);
         -->
         </script>
-        <jsp:include page="footer.jsp"/>
+        <jsp:include page="/WEB-INF/footer.jsp"/>
     </body>
 </html>

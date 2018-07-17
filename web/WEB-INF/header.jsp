@@ -8,39 +8,41 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="${pageContext.request.contextPath}/index">
-        <img src="img/disney.png" width="60" height="50" class="d-inline-block" alt="logo" />
-        AlloDisney
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="container">
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/index">
+            <img src="img/disney2.png" width="auto" height="50" class="d-inline-block" alt="logo" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbar">
-        <ul class="navbar-nav ml-auto">
-            <c:if test="${!empty sessionScope.user}">
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav ml-auto">
+                <c:if test="${!empty sessionScope.user}">
+                    <li class="nav-item">
+                        <a href="${pageContext.request.contextPath}/addamovie" class="nav-link">Ajouter un film</a>
+                    </li>
+                </c:if>
                 <li class="nav-item">
-                    <a href="${pageContext.request.contextPath}/addamovie" class="nav-link">Ajouter un film</a>
+                    <a href="${pageContext.request.contextPath}/listmovie" class="nav-link">Liste des films</a>
                 </li>
-            </c:if>
-            <li class="nav-item">
-                <a href="${pageContext.request.contextPath}/listmovie" class="nav-link">Liste des films</a>
-            </li>
-            <c:choose>
-                <c:when test="${empty sessionScope.user}">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="connection">Se connecter / S'inscrire</a>
-                    </li>
-                </c:when>
-                <c:otherwise>
-                    <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/deconnexion" id="deconnexion" >Se déconnecter</a>
-                    </li>
-                </c:otherwise>
-            </c:choose>
+                <c:choose>
+                    <c:when test="${empty sessionScope.user}">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="connection">Se connecter / S'inscrire</a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="nav-item">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/deconnexion" id="deconnexion" >Se déconnecter</a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
 
-        </ul>
+            </ul>
+        </div>
     </div>
 </nav>
 

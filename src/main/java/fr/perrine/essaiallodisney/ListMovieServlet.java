@@ -22,7 +22,7 @@ public class ListMovieServlet extends HttpServlet {
 
         try {
             PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
-                    .prepareStatement("SELECT * FROM movies");
+                    .prepareStatement("SELECT * FROM movies ORDER BY movies.year DESC");
             ResultSet resultSet = null;
             try {
                 resultSet = preparedStatement.executeQuery();

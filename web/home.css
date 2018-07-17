@@ -234,3 +234,27 @@ h3 {
     margin-top: 10px;
     text-align: right;
 }
+
+/****************** LIST MOVIE *****************/
+.listmovie {
+    text-align: center;
+    padding: 0;
+}
+
+.listmovie li {
+    list-style-type: none;
+    font-size: 20px;
+}
+
+.listmovie li a {
+    color: black;
+}
+
+.listmovie li a:hover {
+    color: red;
+    text-decoration: none;
+}
+
+.titlelist {
+    margin: 50px 0 30px;
+}

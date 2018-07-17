@@ -13,7 +13,7 @@
 
     <body>
         <jsp:include page="/WEB-INF/header.jsp" />
-        <div class="movie-page col-6">
+        <div class="movie-page col-6 content">
             <c:forEach items="${requestScope.models}" var="movie">
                 <h1>${movie.title}</h1>
                 <div class="container">
@@ -30,5 +30,7 @@
                 </div>
             </c:forEach>
         </div>
+
+        <jsp:include page="/WEB-INF/footer.jsp" />
     </body>
 </html>

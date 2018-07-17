@@ -13,9 +13,11 @@
     <body>
         <jsp:include page="header.jsp"/>
 
-        <ul class="content">
+        <h1 class="titlelist">Liste des films</h1>
+
+        <ul class="content listmovie">
         <c:forEach items="${requestScope.listMovie}" var="movie">
-            <li>${movie.title}</li>
+            <li><a href="${pageContext.request.contextPath}/moviepage?id=${movie.id}">${movie.title} (${movie.year})</a></li>
         </c:forEach>
         </ul>
 
