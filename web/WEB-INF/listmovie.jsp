@@ -13,7 +13,7 @@
     <body>
         <jsp:include page="header.jsp"/>
 
-        <ul>
+        <ul class="content">
         <c:forEach items="${requestScope.listMovie}" var="movie">
             <li>${movie.title}</li>
         </c:forEach>

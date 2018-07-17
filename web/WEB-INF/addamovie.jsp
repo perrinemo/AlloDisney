@@ -11,7 +11,34 @@
     <body>
         <jsp:include page="header.jsp"/>
 
-        <div class="col-5">
+        <script type="text/javascript">
+            <!--
+            function maxlength_textarea(id, crid, max)
+            {
+                var txtarea = document.getElementById(id);
+                document.getElementById(crid).innerHTML = max - txtarea.value.length;
+                txtarea.onkeypress=function(){eval('v_maxlength("'+id+'","'+crid+'",'+max+');')};
+                txtarea.onblur=function(){eval('v_maxlength("'+id+'","'+crid+'",'+max+');')};
+                txtarea.onkeyup=function(){eval('v_maxlength("'+id+'","'+crid+'",'+max+');')};
+                txtarea.onkeydown=function(){eval('v_maxlength("'+id+'","'+crid+'",'+max+');')};
+            }
+            function v_maxlength(id, crid, max)
+            {
+                var txtarea = document.getElementById(id);
+                var crreste = document.getElementById(crid);
+                var len = txtarea.value.length;
+                if(len>max)
+                {
+                    txtarea.value=txtarea.value.substr(0,max);
+                }
+                len = txtarea.value.length;
+                crreste.innerHTML = max - len;
+            }
+            -->
+        </script>
+
+        <div class="col-5 content form">
+            <h1>Ajouter un nouveau film</h1>
             <form method="post" action="${pageContext.request.contextPath}/addamovie">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Titre du film" name="title" />
@@ -23,12 +50,18 @@
                     <input type="text" class="form-control" placeholder="Année de sortie" name="year" />
                 </div>
                 <div class="form-group">
-                    <textarea type="text" class="form-control" placeholder="Résumé" name="resume"></textarea>
+                    <textarea type="text" class="form-control" placeholder="Résumé" name="resume" id="resume" rows="4"></textarea>
+                    <p class="nb-char">Il vous reste <span id="reste_char"></span> caractères.</p>
                 </div>
                 <button type="submit" class="btn">Ajouter</button>
             </form>
         </div>
 
+        <script type="text/javascript">
+        <!--
+            maxlength_textarea('resume','reste_char',250);
+        -->
+        </script>
         <jsp:include page="footer.jsp"/>
     </body>
 </html>

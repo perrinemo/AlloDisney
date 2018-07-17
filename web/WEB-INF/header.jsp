@@ -35,7 +35,7 @@
                 </c:when>
                 <c:otherwise>
                     <li class="nav-item">
-                        <a class="nav-link" href="<% session.invalidate(); %>" id="deconnexion">Se déconnecter</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/deconnexion" id="deconnexion" >Se déconnecter</a>
                     </li>
                 </c:otherwise>
             </c:choose>

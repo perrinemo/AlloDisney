@@ -13,12 +13,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-@WebServlet(name = "IndexServlet", urlPatterns = "/index")
-public class IndexServlet extends HttpServlet {
+@WebServlet(name = "BadAuthServlet", urlPatterns = "/badauth")
+public class BadAuthServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SingletonBDD bdd = SingletonBDD.getInstance();
         HttpSession session = request.getSession();
-        Boolean connexion =false;
 
         String pseudoConnexion = request.getParameter("pseudo_connexion");
         String passwordConnexion = request.getParameter("password_connexion");
@@ -46,13 +45,10 @@ public class IndexServlet extends HttpServlet {
                 if (pseudoConnexion.equals(userModels.get(i).getPseudo()) &&
                         passwordConnexion.equals(userModels.get(i).getPassword())) {
                     session.setAttribute("user", pseudoConnexion);
-                    connexion = true;
-                    response.sendRedirect("/index");
+                    this.getServletContext().getRequestDispatcher("/WEB-INF/homepage.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("error", "Pseudo ou mot de passe inconnu");
                 }
-            }
-
-            if (!connexion) {
-                this.getServletContext().getRequestDispatcher("/WEB-INF/badAuth.jsp").forward(request, response);
             }
 
         } catch (SQLException e) {
@@ -61,32 +57,6 @@ public class IndexServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        SingletonBDD bdd = SingletonBDD.getInstance();
-
-        try {
-            PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
-                    .prepareStatement("SELECT * FROM movies ORDER BY id DESC LIMIT 4 ");
-            ResultSet resultSet = null;
-            try {
-                resultSet = preparedStatement.executeQuery();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-            ArrayList<MovieModel> models = new ArrayList<>();
-
-            while(resultSet.next()) {
-                    MovieModel movieModel = new MovieModel();
-                    movieModel.setId(resultSet.getInt("id"));
-                    movieModel.setTitle(resultSet.getString("title"));
-                    movieModel.setResume(resultSet.getString("resume"));
-                    models.add(movieModel);
-            }
-            request.setAttribute("models", models);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        this.getServletContext().getRequestDispatcher("/WEB-INF/homepage.jsp").forward(request, response);
+        this.getServletContext().getRequestDispatcher("/WEB-INF/badAuth.jsp").forward(request, response);
     }
 }
