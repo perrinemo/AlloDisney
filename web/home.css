@@ -13,11 +13,6 @@ body {
 
 .content {
     flex-grow: 1;
-
-h1 {
-    margin-bottom: 50px;
-    font-family: Disney;
-    text-align: center;
 }
 
 h1 {
