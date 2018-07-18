@@ -8,4 +8,8 @@ document.querySelector("#add-a-song").addEventListener('click', function (e) {
     var input = clone.children[0];
     input.value = '';
     input.setAttribute("name", "song[" + song_nb +"]");
+
+    var url = clone.children[1];
+    url.value = '';
+    url.setAttribute("name", "url[" + song_nb + "]");
 });

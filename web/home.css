@@ -21,6 +21,10 @@ h1 {
     text-align: center;
 }
 
+li {
+    list-style-type: none;
+}
+
 /****************** NAVBAR *********************/
 .navbar-brand {
     font-family: Disney;
@@ -261,7 +265,6 @@ h3 {
 }
 
 .listmovie li {
-    list-style-type: none;
     font-size: 20px;
 }
 

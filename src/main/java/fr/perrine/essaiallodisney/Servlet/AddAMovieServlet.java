@@ -29,10 +29,14 @@ public class AddAMovieServlet extends HttpServlet {
         String resume = request.getParameter("resume");
 
         ArrayList<String> songs = new ArrayList<>();
+        ArrayList<String> url = new ArrayList<>();
 
         for (Map.Entry<String, String[]> entry : map.entrySet()) {
             if (entry.getKey().startsWith("song")) {
                 songs.add(entry.getValue()[0]);
+            }
+            if (entry.getKey().startsWith("url")) {
+                url.add(entry.getValue()[0]);
             }
         }
 
@@ -58,12 +62,19 @@ public class AddAMovieServlet extends HttpServlet {
 
             for (int i = 0; i < songs.size(); i++) {
                 String addSong = songs.get(i);
+                String urlVideo = "";
+                if (!url.get(i).isEmpty()) {
+                    urlVideo = url.get(i);
+                } else {
+                    urlVideo = null;
+                }
                 try {
                     PreparedStatement preparedStatement1 = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
-                            .prepareStatement("INSERT INTO songs VALUES(null, ?, null, ?)");
+                            .prepareStatement("INSERT INTO songs VALUES(null, ?, ?, ?)");
 
                     preparedStatement1.setString(1, addSong);
-                    preparedStatement1.setInt(2, movieId);
+                    preparedStatement1.setString(2, urlVideo);
+                    preparedStatement1.setInt(3, movieId);
                     preparedStatement1.executeUpdate();
                 } catch (SQLException e) {
                     e.printStackTrace();

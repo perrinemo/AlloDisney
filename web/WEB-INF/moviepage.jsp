@@ -27,6 +27,20 @@
                             <br />
                             ${movie.resume}
                         </p>
+                        <p style="margin-bottom: 0;"><span>Chansons :</span></p>
+                        <ul>
+                            <c:forEach items="${requestScope.songs}" var="song">
+                                <c:choose>
+                                    <c:when test="${empty song.video}">
+                                        <li>${song.title}</li>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <li><a href="${song.video}">${song.title}</a></li>
+                                    </c:otherwise>
+                                </c:choose>
+
+                            </c:forEach>
+                        </ul>
                     </div>
                 </div>
 

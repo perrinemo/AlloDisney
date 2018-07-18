@@ -2,6 +2,7 @@ package fr.perrine.essaiallodisney.Servlet;
 
 import com.mysql.jdbc.PreparedStatement;
 import fr.perrine.essaiallodisney.Model.MovieModel;
+import fr.perrine.essaiallodisney.Model.SongModel;
 import fr.perrine.essaiallodisney.Singleton.SingletonBDD;
 
 import javax.servlet.ServletException;
@@ -47,6 +48,30 @@ public class MoviePageServlet extends HttpServlet {
                 models.add(movieModel);
             }
             request.setAttribute("models", models);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
+                    .prepareStatement("SELECT * FROM songs WHERE id_movie = ?");
+            preparedStatement.setInt(1, Integer.parseInt(id));
+            ResultSet resultSet = null;
+            try {
+                resultSet = preparedStatement.executeQuery();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            ArrayList<SongModel> songs = new ArrayList<>();
+
+            while(resultSet.next()) {
+                SongModel song = new SongModel();
+                song.setTitle(resultSet.getString("title_song"));
+                song.setVideo(resultSet.getString("video_song"));
+                songs.add(song);
+            }
+            request.setAttribute("songs", songs);
         } catch (SQLException e) {
             e.printStackTrace();
         }

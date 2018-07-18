@@ -56,7 +56,8 @@
                 </div>
                 <div class="form-group form-inline">
                     <div class="input-group col-10 new-song">
-                        <input type="text" class="form-control song" placeholder="Ajouter une chanson" name="song[0]" />
+                        <input type="text" class="form-control col-6 song" placeholder="Ajouter une chanson (optionnel)" name="song[0]" />
+                        <input type="text" class="form-control col-6 song" placeholder="Lien youtube (optionnel)" name="url[0]" />
                     </div>
                     <div class="input-group-prepend col-2">
                         <div class="input-group-text">
