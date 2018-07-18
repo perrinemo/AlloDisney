@@ -18,7 +18,7 @@ import java.util.ArrayList;
 @WebServlet(name = "BadAuthServlet", urlPatterns = "/badauth")
 public class BadAuthServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        SingletonBDD bdd = SingletonBDD.getInstance();
+        SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
         HttpSession session = request.getSession();
 
         String pseudoConnexion = request.getParameter("pseudo_connexion");

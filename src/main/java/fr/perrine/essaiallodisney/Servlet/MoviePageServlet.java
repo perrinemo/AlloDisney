@@ -21,7 +21,7 @@ public class MoviePageServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        SingletonBDD bdd = SingletonBDD.getInstance();
+        SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
         String id = request.getParameter("id");
 
         try {

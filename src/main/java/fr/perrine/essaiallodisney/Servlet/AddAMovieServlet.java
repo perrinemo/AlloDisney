@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class AddAMovieServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        SingletonBDD bdd = SingletonBDD.getInstance();
+        SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
 
         String title = request.getParameter("title");
         String duration = request.getParameter("duration");

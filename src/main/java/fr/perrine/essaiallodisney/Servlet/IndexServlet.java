@@ -19,7 +19,7 @@ import java.util.ArrayList;
 @WebServlet(name = "IndexServlet", urlPatterns = "/index")
 public class IndexServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        SingletonBDD bdd = SingletonBDD.getInstance();
+        SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
         HttpSession session = request.getSession();
         Boolean connexion =false;
 
@@ -64,7 +64,7 @@ public class IndexServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        SingletonBDD bdd = SingletonBDD.getInstance();
+        SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
 
         try {
             PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()

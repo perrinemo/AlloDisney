@@ -21,7 +21,7 @@ public class ListMovieServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        SingletonBDD bdd = SingletonBDD.getInstance();
+        SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
 
         try {
             PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
