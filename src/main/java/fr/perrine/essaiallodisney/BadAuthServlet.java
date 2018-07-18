@@ -48,6 +48,7 @@ public class BadAuthServlet extends HttpServlet {
                     this.getServletContext().getRequestDispatcher("/WEB-INF/homepage.jsp").forward(request, response);
                 } else {
                     request.setAttribute("error", "Pseudo ou mot de passe inconnu");
+                    this.getServletContext().getRequestDispatcher("/WEB-INF/badAuth.jsp").forward(request, response);
                 }
             }
 
