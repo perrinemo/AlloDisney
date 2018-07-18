@@ -187,6 +187,10 @@ h3 {
 }
 
 /****************** MOVIE PAGE *****************/
+.fa-edit {
+    float: right;
+}
+
 .movie-page {
     margin: 50px auto;
 }

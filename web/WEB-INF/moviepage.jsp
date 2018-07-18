@@ -15,6 +15,7 @@
         <jsp:include page="/WEB-INF/header.jsp" />
         <div class="movie-page col-6 content">
             <c:forEach items="${requestScope.models}" var="movie">
+                <!--<i class="far fa-edit"></i>-->
                 <h1>${movie.title}</h1>
                 <div class="container">
                     <img src="http://via.placeholder.com/300x400" alt="${movie.title}" />
@@ -28,6 +29,7 @@
                         </p>
                     </div>
                 </div>
+
             </c:forEach>
         </div>
 
