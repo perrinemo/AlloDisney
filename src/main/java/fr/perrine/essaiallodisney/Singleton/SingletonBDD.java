@@ -1,4 +1,4 @@
-package fr.perrine.essaiallodisney;
+package fr.perrine.essaiallodisney.Singleton;
 
 import java.sql.Connection;
 import com.mysql.jdbc.Driver;

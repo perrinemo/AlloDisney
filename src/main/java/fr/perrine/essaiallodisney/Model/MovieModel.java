@@ -1,4 +1,4 @@
-package fr.perrine.essaiallodisney;
+package fr.perrine.essaiallodisney.Model;
 
 public class MovieModel {
     private int id;

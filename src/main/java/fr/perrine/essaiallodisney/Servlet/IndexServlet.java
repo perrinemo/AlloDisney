@@ -1,6 +1,9 @@
-package fr.perrine.essaiallodisney;
+package fr.perrine.essaiallodisney.Servlet;
 
 import com.mysql.jdbc.PreparedStatement;
+import fr.perrine.essaiallodisney.Model.MovieModel;
+import fr.perrine.essaiallodisney.Singleton.SingletonBDD;
+import fr.perrine.essaiallodisney.Model.UserModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,11 +16,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-@WebServlet(name = "BadAuthServlet", urlPatterns = "/badauth")
-public class BadAuthServlet extends HttpServlet {
+@WebServlet(name = "IndexServlet", urlPatterns = "/index")
+public class IndexServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SingletonBDD bdd = SingletonBDD.getInstance();
         HttpSession session = request.getSession();
+        Boolean connexion =false;
 
         String pseudoConnexion = request.getParameter("pseudo_connexion");
         String passwordConnexion = request.getParameter("password_connexion");
@@ -45,17 +49,47 @@ public class BadAuthServlet extends HttpServlet {
                 if (pseudoConnexion.equals(userModels.get(i).getPseudo()) &&
                         passwordConnexion.equals(userModels.get(i).getPassword())) {
                     session.setAttribute("user", pseudoConnexion);
+                    connexion = true;
                     response.sendRedirect("/index");
                 }
+            }
+
+            if (!connexion) {
+                this.getServletContext().getRequestDispatcher("/WEB-INF/badAuth.jsp").forward(request, response);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher("/WEB-INF/badAuth.jsp").forward(request, response);
+        SingletonBDD bdd = SingletonBDD.getInstance();
+
+        try {
+            PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
+                    .prepareStatement("SELECT * FROM movies ORDER BY RAND() LIMIT 4 ");
+            ResultSet resultSet = null;
+            try {
+                resultSet = preparedStatement.executeQuery();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            ArrayList<MovieModel> models = new ArrayList<>();
+
+            while(resultSet.next()) {
+                    MovieModel movieModel = new MovieModel();
+                    movieModel.setId(resultSet.getInt("id"));
+                    movieModel.setTitle(resultSet.getString("title"));
+                    movieModel.setResume(resultSet.getString("resume"));
+                    models.add(movieModel);
+            }
+            request.setAttribute("models", models);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        this.getServletContext().getRequestDispatcher("/WEB-INF/homepage.jsp").forward(request, response);
     }
 }

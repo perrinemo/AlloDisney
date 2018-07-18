@@ -1,4 +1,7 @@
-package fr.perrine.essaiallodisney;
+package fr.perrine.essaiallodisney.Servlet;
+
+import fr.perrine.essaiallodisney.Model.MovieModel;
+import fr.perrine.essaiallodisney.Singleton.SingletonBDD;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

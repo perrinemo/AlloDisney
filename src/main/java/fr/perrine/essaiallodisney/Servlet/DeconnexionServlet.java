@@ -1,4 +1,4 @@
-package fr.perrine.essaiallodisney;
+package fr.perrine.essaiallodisney.Servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
