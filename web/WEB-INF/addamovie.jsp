@@ -41,16 +41,16 @@
             <h1>Ajouter un nouveau film</h1>
             <form method="post" action="${pageContext.request.contextPath}/addamovie">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Titre du film" name="title" />
+                    <input type="text" class="form-control" required placeholder="ex : La Belle et la Bête" name="title" />
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Durée du film" name="duration" />
+                    <input type="text" class="form-control" required placeholder="ex : 1h27" name="duration" />
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Année de sortie" name="year" />
+                    <input type="number" min="1950" class="form-control" required placeholder="ex : 1991" name="year" />
                 </div>
                 <div class="form-group">
-                    <textarea type="text" class="form-control" placeholder="Résumé" name="resume" id="resume" rows="4"></textarea>
+                    <textarea type="text" class="form-control" required placeholder="Résumé" name="resume" id="resume" rows="4"></textarea>
                     <p class="nb-char">Il vous reste <span id="reste_char"></span> caractères.</p>
                 </div>
                 <button type="submit" class="btn">Ajouter</button>

@@ -16,10 +16,10 @@
                 <h2 id="title-popup">Se connecter à AlloDisney</h2>
                 <form method="post" action="${pageContext.request.contextPath}/badauth">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="pseudo_connexion" placeholder="Pseudo" />
+                        <input type="text" class="form-control" required name="pseudo_connexion" placeholder="Pseudo" />
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" name="password_connexion" placeholder="Mot de passe" />
+                        <input type="password" class="form-control" required name="password_connexion" placeholder="Mot de passe" />
                     </div>
                     <button type="submit"id="btn-connection" class="btn">Connexion</button>
                 </form>
