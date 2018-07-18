@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: perrine
@@ -52,6 +53,16 @@
                 <div class="form-group">
                     <textarea type="text" class="form-control" required placeholder="Résumé" name="resume" id="resume" rows="4"></textarea>
                     <p class="nb-char">Il vous reste <span id="reste_char"></span> caractères.</p>
+                </div>
+                <div class="form-group form-inline">
+                    <div class="input-group col-10 new-song">
+                        <input type="text" class="form-control song" placeholder="Ajouter une chanson" name="song" />
+                    </div>
+                    <div class="input-group-prepend col-2">
+                        <div class="input-group-text">
+                            <button type="button" class="btn" id="add-a-song">+</button>
+                        </div>
+                    </div>
                 </div>
                 <button type="submit" class="btn">Ajouter</button>
             </form>

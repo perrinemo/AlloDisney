@@ -225,9 +225,24 @@ h3 {
 }
 
 /****************** ADD A MOVIE ****************/
+.btn {
+    background-color: transparent;
+    border: 1px solid darkgray;
+}
+
 .form {
     margin: 50px auto;
     text-align: center;
+}
+
+.input-group-text {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+#new-song input {
+    margin-bottom: 10px;
 }
 
 .nb-char {

@@ -45,16 +45,14 @@ public class BadAuthServlet extends HttpServlet {
                 if (pseudoConnexion.equals(userModels.get(i).getPseudo()) &&
                         passwordConnexion.equals(userModels.get(i).getPassword())) {
                     session.setAttribute("user", pseudoConnexion);
-                    this.getServletContext().getRequestDispatcher("/WEB-INF/homepage.jsp").forward(request, response);
-                } else {
-                    request.setAttribute("error", "Pseudo ou mot de passe inconnu");
-                    this.getServletContext().getRequestDispatcher("/WEB-INF/badAuth.jsp").forward(request, response);
+                    response.sendRedirect("/index");
                 }
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

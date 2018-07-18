@@ -23,9 +23,7 @@
                     </div>
                     <button type="submit"id="btn-connection" class="btn">Connexion</button>
                 </form>
-                <c:if test="${not empty requestScope.error}">
-                    <p>${requestScope.error}</p>
-                </c:if>
+                <p>Pseudo ou mot de passe inconnu</p>
             </div>
             <div class="modal-footer">
                 <p>Pas encore inscrit ? <a href="${pageContext.request.contextPath}/inscription" id="inscription">S'inscrire maintenant</a></p>

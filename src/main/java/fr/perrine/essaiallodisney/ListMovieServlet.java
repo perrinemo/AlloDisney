@@ -36,8 +36,6 @@ public class ListMovieServlet extends HttpServlet {
                 MovieModel movie = new MovieModel();
                 movie.setId(resultSet.getInt("id"));
                 movie.setTitle(resultSet.getString("title"));
-                movie.setResume(resultSet.getString("resume"));
-                movie.setDuration(resultSet.getString("duration"));
                 movie.setYear(resultSet.getInt("year"));
                 models.add(movie);
             }
