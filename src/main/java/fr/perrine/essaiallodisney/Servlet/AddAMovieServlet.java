@@ -9,8 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Map;
 
 @WebServlet(name = "AddAMovieServlet", urlPatterns = "/addamovie")
 public class AddAMovieServlet extends HttpServlet {
@@ -18,30 +21,49 @@ public class AddAMovieServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
 
+        Map<String, String[]> map = request.getParameterMap();
+
         String title = request.getParameter("title");
         String duration = request.getParameter("duration");
         String year = request.getParameter("year");
         String resume = request.getParameter("resume");
 
         ArrayList<String> songs = new ArrayList<>();
-        songs.add(request.getParameter("song"));
+
+        for (Map.Entry<String, String[]> entry : map.entrySet()) {
+            if (entry.getKey().startsWith("song")) {
+                songs.add(entry.getValue()[0]);
+            }
+        }
 
         try {
             PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
-                    .prepareStatement("INSERT INTO movies VALUES(null, ?, ?, ?, ?)");
+                    .prepareStatement("INSERT INTO movies VALUES(null, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, title);
             preparedStatement.setString(2, year);
             preparedStatement.setString(3, duration);
             preparedStatement.setString(4, resume);
             preparedStatement.executeUpdate();
 
+            int movieId = 0;
+
+            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    movieId = generatedKeys.getInt(1);
+                }
+                else {
+                    throw new SQLException("Creating user failed, no ID obtained.");
+                }
+            }
+
             for (int i = 0; i < songs.size(); i++) {
                 String addSong = songs.get(i);
                 try {
                     PreparedStatement preparedStatement1 = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
-                            .prepareStatement("INSERT INTO songs VALUES(null, ?, null)");
+                            .prepareStatement("INSERT INTO songs VALUES(null, ?, null, ?)");
 
                     preparedStatement1.setString(1, addSong);
+                    preparedStatement1.setInt(2, movieId);
                     preparedStatement1.executeUpdate();
                 } catch (SQLException e) {
                     e.printStackTrace();
