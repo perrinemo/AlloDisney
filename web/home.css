@@ -115,14 +115,14 @@ li {
 
 #slider {
     margin: 50px auto 20px;
-    width: 800px;
+    width: 900px;
     height: 550px;
 }
 #slider a {
     position: absolute;
 }
 #slider a img {
-    width: 800px;
+    width: 900px;
     height: auto;
 }
 #slider a:nth-of-type(1) {
@@ -152,13 +152,20 @@ h3 {
 .more {
     float: right;
     margin-right: 5px;
+    color: darkmagenta;
 }
+
+.more:hover {
+    color: indigo;
+    text-decoration: none;
+}
+
 .vignette {
     float: left;
     border: 1px solid black;
     margin-left: 2.5%;
     width: 45%;
-    height: 300px;
+    height: 330px;
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 20px;
@@ -179,6 +186,7 @@ h3 {
     line-height: 60px;
     background-color: #F5F5F5;
     margin-top: 30px;
+    font-size: 20px;
 }
 
 .reseaux {
@@ -187,12 +195,45 @@ h3 {
 
 .reseaux i {
     margin: auto 10px;
+    color: #424242;
+}
+
+.reseaux .fa-facebook-f:hover {
+    color: #3b5998;
+}
+
+.reseaux .fa-twitter:hover {
+    color: #1da1f2;
+}
+
+.reseaux .fa-pinterest-p:hover {
+    color: #bd081c;
+}
+
+.reseaux .fa-youtube:hover {
+    color: #ff0000;
+}
+
+.reseaux .fa-instagram:hover {
     color: #000;
 }
 
 /****************** MOVIE PAGE *****************/
 .fa-edit {
     float: right;
+}
+
+.infos a {
+    color: darkmagenta;
+}
+
+.infos a:hover {
+    color: indigo;
+    text-decoration: none;
+}
+
+.movie-content {
+    display: flex;
 }
 
 .movie-page {
@@ -273,7 +314,7 @@ h3 {
 }
 
 .listmovie li a:hover {
-    color: red;
+    color: darkmagenta;
     text-decoration: none;
 }
 

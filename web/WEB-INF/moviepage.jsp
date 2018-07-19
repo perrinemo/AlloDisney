@@ -17,9 +17,11 @@
             <c:forEach items="${requestScope.models}" var="movie">
                 <!--<i class="far fa-edit"></i>-->
                 <h1>${movie.title}</h1>
-                <div class="container">
-                    <img src="http://via.placeholder.com/300x400" alt="${movie.title}" />
-                    <div>
+                <div class="container movie-content">
+                    <div class="image">
+                        <img src="http://via.placeholder.com/300x400" alt="${movie.title}" />
+                    </div>
+                    <div class="infos">
                         <p><span>Durée : </span>${movie.duration}</p>
                         <p><span>Année de sortie : </span>${movie.year}</p>
                         <p>
@@ -31,14 +33,20 @@
                         <ul>
                             <c:forEach items="${requestScope.songs}" var="song">
                                 <c:choose>
-                                    <c:when test="${empty song.video}">
-                                        <li>${song.title}</li>
+                                    <c:when test="${empty song.title}">
+                                        <li>Pas de chanson</li>
                                     </c:when>
                                     <c:otherwise>
-                                        <li><a href="${song.video}">${song.title}</a></li>
+                                        <c:choose>
+                                            <c:when test="${empty song.video}">
+                                                <li>${song.title}</li>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <li><a href="${song.video}">${song.title}</a></li>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </c:otherwise>
                                 </c:choose>
-
                             </c:forEach>
                         </ul>
                     </div>
