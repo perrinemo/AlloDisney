@@ -249,6 +249,8 @@ h3 {
 .movie-page img {
     float: left;
     margin-right: 20px;
+    width: 300px;
+    height: auto;
 }
 
 .movie-page p {
@@ -284,14 +286,19 @@ h3 {
     text-align: center;
 }
 
+.input-file {
+    border: none;
+    padding: 0;
+}
+
 .input-group-text {
     background-color: transparent;
     border: none;
     padding: 0;
 }
 
-#new-song input {
-    margin-bottom: 10px;
+.new-song input {
+    margin-top: 10px;
 }
 
 .nb-char {
@@ -320,4 +327,12 @@ h3 {
 
 .titlelist {
     margin: 50px 0 30px;
+}
+
+/****************** MEDIA QUERIES **************/
+@media screen and (max-width: 980px) {
+    .vignette {
+        width: 80%;
+        margin: 0 auto 20px;
+    }
 }

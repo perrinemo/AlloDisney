@@ -13,13 +13,13 @@
 
     <body>
         <jsp:include page="/WEB-INF/header.jsp" />
-        <div class="movie-page col-6 content">
+        <div class="movie-page col-10 col-lg-6 content">
             <c:forEach items="${requestScope.models}" var="movie">
                 <!--<i class="far fa-edit"></i>-->
                 <h1>${movie.title}</h1>
                 <div class="container movie-content">
                     <div class="image">
-                        <img src="http://via.placeholder.com/300x400" alt="${movie.title}" />
+                        <img src="${pageContext.request.contextPath}/img/${movie.image}" alt="${movie.title}" />
                     </div>
                     <div class="infos">
                         <p><span>Durée : </span>${movie.duration}</p>

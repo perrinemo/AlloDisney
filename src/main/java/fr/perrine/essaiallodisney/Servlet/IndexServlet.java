@@ -20,7 +20,6 @@ import java.util.ArrayList;
 public class IndexServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
-        HttpSession session = request.getSession();
         Boolean connexion =false;
 
         String pseudoConnexion = request.getParameter("pseudo_connexion");
@@ -48,6 +47,7 @@ public class IndexServlet extends HttpServlet {
             for (int i = 0; i < userModels.size(); i++) {
                 if (pseudoConnexion.equals(userModels.get(i).getPseudo()) &&
                         passwordConnexion.equals(userModels.get(i).getPassword())) {
+                    HttpSession session = request.getSession();
                     session.setAttribute("user", pseudoConnexion);
                     connexion = true;
                     response.sendRedirect("/index");
@@ -83,6 +83,7 @@ public class IndexServlet extends HttpServlet {
                     movieModel.setId(resultSet.getInt("id"));
                     movieModel.setTitle(resultSet.getString("title"));
                     movieModel.setResume(resultSet.getString("resume"));
+                    movieModel.setImage(resultSet.getString("image"));
                     models.add(movieModel);
             }
             request.setAttribute("models", models);

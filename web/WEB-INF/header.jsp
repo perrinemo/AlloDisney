@@ -47,7 +47,7 @@
 </nav>
 
 <div id="myModal" class="modal">
-    <div class="modal-content col-5">
+    <div class="modal-content col-10 col-lg-5">
         <span class="close">&times;</span>
         <div class="modal-body">
             <h1 id="title-popup">Se connecter à AlloDisney</h1>

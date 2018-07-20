@@ -38,9 +38,9 @@
             -->
         </script>
 
-        <div class="col-5 content form">
+        <div class="col-sm-10 col-lg-5 content form">
             <h1>Ajouter un nouveau film</h1>
-            <form method="post" action="${pageContext.request.contextPath}/addamovie">
+            <form method="post" action="${pageContext.request.contextPath}/addamovie" enctype="multipart/form-data">
                 <div class="form-group">
                     <input type="text" class="form-control" required placeholder="ex : La Belle et la Bête" name="title" />
                 </div>
@@ -48,11 +48,14 @@
                     <input type="text" class="form-control" required placeholder="ex : 1h27" name="duration" />
                 </div>
                 <div class="form-group">
-                    <input type="number" min="1950" class="form-control" required placeholder="ex : 1991" name="year" />
+                    <input type="number" min="1938" class="form-control" required placeholder="ex : 1991" name="year" />
                 </div>
                 <div class="form-group">
                     <textarea type="text" class="form-control" required placeholder="Résumé" name="resume" id="resume" rows="4"></textarea>
                     <p class="nb-char">Il vous reste <span id="reste_char"></span> caractères.</p>
+                </div>
+                <div class="form-control">
+                    <input type="file" name="file" required class="input-file form-control" />
                 </div>
                 <div class="form-group form-inline">
                     <div class="input-group col-10 new-song">

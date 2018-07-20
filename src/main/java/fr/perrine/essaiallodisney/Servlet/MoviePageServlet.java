@@ -45,6 +45,7 @@ public class MoviePageServlet extends HttpServlet {
                 movieModel.setYear(resultSet.getInt("year"));
                 movieModel.setDuration(resultSet.getString("duration"));
                 movieModel.setResume(resultSet.getString("resume"));
+                movieModel.setImage(resultSet.getString("image"));
                 models.add(movieModel);
             }
             request.setAttribute("models", models);
