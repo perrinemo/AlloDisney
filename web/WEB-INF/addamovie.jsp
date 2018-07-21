@@ -54,6 +54,9 @@
                     <textarea type="text" class="form-control" required placeholder="Résumé" name="resume" id="resume" rows="4"></textarea>
                     <p class="nb-char">Il vous reste <span id="reste_char"></span> caractères.</p>
                 </div>
+                <div class="form-group">
+                    <input type="text" name="trailer" placeholder="Bande annonce (lien youtube optionnel)" class="form-control" />
+                </div>
                 <div class="form-control">
                     <input type="file" name="file" required class="input-file form-control" />
                 </div>

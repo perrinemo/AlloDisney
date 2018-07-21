@@ -7,6 +7,7 @@ public class MovieModel {
     private String duration;
     private String resume;
     private String image;
+    private String trailer;
 
     public MovieModel() {}
 
@@ -56,5 +57,13 @@ public class MovieModel {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getTrailer() {
+        return trailer;
+    }
+
+    public void setTrailer(String trailer) {
+        this.trailer = trailer;
     }
 }

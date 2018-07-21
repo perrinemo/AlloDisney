@@ -27,7 +27,6 @@ public class MoviePageServlet extends HttpServlet {
         SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
         bdd.getAMovie(request, response);
 
-
         this.getServletContext().getRequestDispatcher("/WEB-INF/moviepage.jsp").forward(request, response);
     }
 

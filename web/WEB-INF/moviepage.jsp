@@ -54,6 +54,11 @@
                     </div>
                 </div>
 
+                <div class="trailer">
+                    <iframe width="560" height="315" src="${movie.trailer}"
+                            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+
             </c:forEach>
         </div>
 
