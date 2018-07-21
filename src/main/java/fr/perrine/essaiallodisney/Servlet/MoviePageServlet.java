@@ -72,7 +72,14 @@ public class MoviePageServlet extends HttpServlet {
                 song.setVideo(resultSet.getString("video_song"));
                 songs.add(song);
             }
-            request.setAttribute("songs", songs);
+
+            if (songs.size() == 0) {
+                request.setAttribute("no_song", "Pas de chanson");
+            } else {
+                request.setAttribute("songs", songs);
+            }
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

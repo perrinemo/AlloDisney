@@ -25,6 +25,15 @@ li {
     list-style-type: none;
 }
 
+a {
+    color: black;
+}
+
+a:hover {
+    color: darkmagenta;
+    text-decoration: none;
+}
+
 /****************** NAVBAR *********************/
 .navbar-brand {
     font-family: Disney;
@@ -152,12 +161,6 @@ h3 {
 .more {
     float: right;
     margin-right: 5px;
-    color: darkmagenta;
-}
-
-.more:hover {
-    color: indigo;
-    text-decoration: none;
 }
 
 .vignette {
@@ -221,15 +224,6 @@ h3 {
 /****************** MOVIE PAGE *****************/
 .fa-edit {
     float: right;
-}
-
-.infos a {
-    color: darkmagenta;
-}
-
-.infos a:hover {
-    color: indigo;
-    text-decoration: none;
 }
 
 .movie-content {
@@ -314,15 +308,6 @@ h3 {
 
 .listmovie li {
     font-size: 20px;
-}
-
-.listmovie li a {
-    color: black;
-}
-
-.listmovie li a:hover {
-    color: darkmagenta;
-    text-decoration: none;
 }
 
 .titlelist {
