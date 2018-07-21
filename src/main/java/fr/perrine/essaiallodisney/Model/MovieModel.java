@@ -1,4 +1,4 @@
-package fr.perrine.essaiallodisney;
+package fr.perrine.essaiallodisney.Model;
 
 public class MovieModel {
     private int id;
@@ -6,6 +6,7 @@ public class MovieModel {
     private int year;
     private String duration;
     private String resume;
+    private String image;
 
     public MovieModel() {}
 
@@ -47,5 +48,13 @@ public class MovieModel {
 
     public void setResume(String resume) {
         this.resume = resume;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

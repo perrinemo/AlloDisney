@@ -1,4 +1,4 @@
-package fr.perrine.essaiallodisney;
+package fr.perrine.essaiallodisney.Servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +17,6 @@ public class DeconnexionServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         session.invalidate();
-        this.getServletContext().getRequestDispatcher("/WEB-INF/homepage.jsp").forward(request, response);
+        response.sendRedirect("/index");
     }
 }

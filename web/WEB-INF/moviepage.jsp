@@ -13,12 +13,15 @@
 
     <body>
         <jsp:include page="/WEB-INF/header.jsp" />
-        <div class="movie-page col-6">
+        <div class="movie-page col-10 col-lg-6 content">
             <c:forEach items="${requestScope.models}" var="movie">
+                <!--<i class="far fa-edit"></i>-->
                 <h1>${movie.title}</h1>
-                <div class="container">
-                    <img src="http://via.placeholder.com/300x400" alt="${movie.title}" />
-                    <div>
+                <div class="container movie-content">
+                    <div class="image">
+                        <img src="${pageContext.request.contextPath}/img/${movie.image}" alt="${movie.title}" />
+                    </div>
+                    <div class="infos">
                         <p><span>Durée : </span>${movie.duration}</p>
                         <p><span>Année de sortie : </span>${movie.year}</p>
                         <p>
@@ -26,9 +29,32 @@
                             <br />
                             ${movie.resume}
                         </p>
+                        <p style="margin-bottom: 0;"><span>Chansons :</span></p>
+                        <ul>
+                            <c:choose>
+                                <c:when test="${!empty requestScope.no_song}">
+                                    <li>${requestScope.no_song}</li>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:forEach items="${requestScope.songs}" var="song">
+                                        <c:choose>
+                                            <c:when test="${empty song.video}">
+                                                <li>${song.title}</li>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <li><a href="${song.video}">${song.title}</a></li>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
+                                </c:otherwise>
+                            </c:choose>
+                        </ul>
                     </div>
                 </div>
+
             </c:forEach>
         </div>
+
+        <jsp:include page="/WEB-INF/footer.jsp" />
     </body>
 </html>

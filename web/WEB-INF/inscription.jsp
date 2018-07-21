@@ -18,13 +18,13 @@
             <h2>Je m'inscris :</h2>
             <form method="post" action="${pageContext.request.contextPath}/inscription">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="pseudo_inscription" placeholder="Pseudo" />
+                    <input type="text" class="form-control" required name="pseudo_inscription" placeholder="Pseudo" />
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" name="email_inscription" placeholder="Adresse email" />
+                    <input type="email" class="form-control" required name="email_inscription" placeholder="Adresse email" />
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" name="password_inscription" placeholder="Mot de passe" />
+                    <input type="password" class="form-control" required name="password_inscription" placeholder="Mot de passe" />
                 </div>
                 <p id="inscrit">
                     <a href="${pageContext.request.contextPath}/index">Déjà inscrit ?</a>

@@ -11,17 +11,18 @@
         <i class="far fa-copyright"></i>
         AlloDisney 2018
         <span class="reseaux">
-            <a href="https://fr-fr.facebook.com/disneyfrance/"><i class="fab fa-facebook-f fa-2x"></i></a>
-            <a href="https://twitter.com/disneyfr"><i class="fab fa-twitter fa-2x"></i></a>
-            <a href="https://www.pinterest.com/disneyfrance"><i class="fab fa-pinterest-p fa-2x"></i></a>
-            <a href="https://www.instagram.com/disneyfr"><i class="fab fa-instagram fa-2x"></i></a>
-            <a href="https://www.youtube.com/user/waltdisneystudiosfr"><i class="fab fa-youtube fa-2x"></i></a>
+            <a href="https://fr-fr.facebook.com/disneyfrance/"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/disneyfr"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.pinterest.com/disneyfrance"><i class="fab fa-pinterest-p"></i></a>
+            <a href="https://www.instagram.com/disneyfr"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/user/waltdisneystudiosfr"><i class="fab fa-youtube"></i></a>
         </span>
     </div>
 </footer>
 
 <script type="text/javascript" src="js/popup.js"></script>
 <script type="text/javascript" src="js/slider.js"></script>
+<script type="text/javascript" src="js/input.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

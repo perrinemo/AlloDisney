@@ -21,6 +21,19 @@ h1 {
     text-align: center;
 }
 
+li {
+    list-style-type: none;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: darkmagenta;
+    text-decoration: none;
+}
+
 /****************** NAVBAR *********************/
 .navbar-brand {
     font-family: Disney;
@@ -111,14 +124,14 @@ h1 {
 
 #slider {
     margin: 50px auto 20px;
-    width: 800px;
+    width: 900px;
     height: 550px;
 }
 #slider a {
     position: absolute;
 }
 #slider a img {
-    width: 800px;
+    width: 900px;
     height: auto;
 }
 #slider a:nth-of-type(1) {
@@ -149,12 +162,13 @@ h3 {
     float: right;
     margin-right: 5px;
 }
+
 .vignette {
     float: left;
     border: 1px solid black;
     margin-left: 2.5%;
     width: 45%;
-    height: 300px;
+    height: 330px;
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 20px;
@@ -175,6 +189,7 @@ h3 {
     line-height: 60px;
     background-color: #F5F5F5;
     margin-top: 30px;
+    font-size: 20px;
 }
 
 .reseaux {
@@ -183,10 +198,38 @@ h3 {
 
 .reseaux i {
     margin: auto 10px;
+    color: #424242;
+}
+
+.reseaux .fa-facebook-f:hover {
+    color: #3b5998;
+}
+
+.reseaux .fa-twitter:hover {
+    color: #1da1f2;
+}
+
+.reseaux .fa-pinterest-p:hover {
+    color: #bd081c;
+}
+
+.reseaux .fa-youtube:hover {
+    color: #ff0000;
+}
+
+.reseaux .fa-instagram:hover {
     color: #000;
 }
 
 /****************** MOVIE PAGE *****************/
+.fa-edit {
+    float: right;
+}
+
+.movie-content {
+    display: flex;
+}
+
 .movie-page {
     margin: 50px auto;
 }
@@ -200,6 +243,8 @@ h3 {
 .movie-page img {
     float: left;
     margin-right: 20px;
+    width: 300px;
+    height: auto;
 }
 
 .movie-page p {
@@ -225,12 +270,54 @@ h3 {
 }
 
 /****************** ADD A MOVIE ****************/
+.btn {
+    background-color: transparent;
+    border: 1px solid darkgray;
+}
+
 .form {
     margin: 50px auto;
     text-align: center;
 }
 
+.input-file {
+    border: none;
+    padding: 0;
+}
+
+.input-group-text {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+.new-song input {
+    margin-top: 10px;
+}
+
 .nb-char {
     margin-top: 10px;
     text-align: right;
+}
+
+/****************** LIST MOVIE *****************/
+.listmovie {
+    text-align: center;
+    padding: 0;
+}
+
+.listmovie li {
+    font-size: 20px;
+}
+
+.titlelist {
+    margin: 50px 0 30px;
+}
+
+/****************** MEDIA QUERIES **************/
+@media screen and (max-width: 980px) {
+    .vignette {
+        width: 80%;
+        margin: 0 auto 20px;
+    }
 }

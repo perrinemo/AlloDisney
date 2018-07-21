@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: perrine
@@ -7,9 +8,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-    <jsp:include page="head.jsp"/>
+    <jsp:include page="/WEB-INF/head.jsp"/>
     <body>
-        <jsp:include page="header.jsp"/>
+        <jsp:include page="/WEB-INF/header.jsp"/>
 
         <script type="text/javascript">
             <!--
@@ -37,21 +38,35 @@
             -->
         </script>
 
-        <div class="col-5 content form">
+        <div class="col-sm-10 col-lg-5 content form">
             <h1>Ajouter un nouveau film</h1>
-            <form method="post" action="${pageContext.request.contextPath}/addamovie">
+            <form method="post" action="${pageContext.request.contextPath}/addamovie" enctype="multipart/form-data">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Titre du film" name="title" />
+                    <input type="text" class="form-control" required placeholder="ex : La Belle et la Bête" name="title" />
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Durée du film" name="duration" />
+                    <input type="text" class="form-control" required placeholder="ex : 1h27" name="duration" />
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Année de sortie" name="year" />
+                    <input type="number" min="1938" class="form-control" required placeholder="ex : 1991" name="year" />
                 </div>
                 <div class="form-group">
-                    <textarea type="text" class="form-control" placeholder="Résumé" name="resume" id="resume" rows="4"></textarea>
+                    <textarea type="text" class="form-control" required placeholder="Résumé" name="resume" id="resume" rows="4"></textarea>
                     <p class="nb-char">Il vous reste <span id="reste_char"></span> caractères.</p>
+                </div>
+                <div class="form-control">
+                    <input type="file" name="file" required class="input-file form-control" />
+                </div>
+                <div class="form-group form-inline">
+                    <div class="input-group col-10 new-song">
+                        <input type="text" class="form-control col-6 song" placeholder="Ajouter une chanson (optionnel)" name="song[0]" />
+                        <input type="text" class="form-control col-6 song" placeholder="Lien youtube (optionnel)" name="url[0]" />
+                    </div>
+                    <div class="input-group-prepend col-2">
+                        <div class="input-group-text">
+                            <button type="button" class="btn" id="add-a-song">+</button>
+                        </div>
+                    </div>
                 </div>
                 <button type="submit" class="btn">Ajouter</button>
             </form>
@@ -62,6 +77,6 @@
             maxlength_textarea('resume','reste_char',250);
         -->
         </script>
-        <jsp:include page="footer.jsp"/>
+        <jsp:include page="/WEB-INF/footer.jsp"/>
     </body>
 </html>

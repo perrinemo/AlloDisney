@@ -1,6 +1,7 @@
-package fr.perrine.essaiallodisney;
+package fr.perrine.essaiallodisney.Servlet;
 
 import com.mysql.jdbc.PreparedStatement;
+import fr.perrine.essaiallodisney.Singleton.SingletonBDD;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +15,7 @@ import java.sql.SQLException;
 @WebServlet(name = "InscriptionServlet", urlPatterns = "/inscription")
 public class InscriptionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        SingletonBDD bdd = SingletonBDD.getInstance();
+        SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
 
         String emailInscription = request.getParameter("email_inscription");
         String passwordInscription = request.getParameter("password_inscription");

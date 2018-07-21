@@ -15,15 +15,17 @@
     <div class="content">
         <div id="slider">
             <a href="#"><img src="./img/disney1.jpg" alt="disney" /></a>
-            <a href="#"><img src="./img/disney2.jpg" alt="disney" /></a>
+            <a href="#"><img src="./img/disney4.jpg" alt="disney" /></a>
             <a href="#"><img src="./img/disney3.jpg" alt="disney" /></a>
+            <a href="#"><img src="./img/disney5.jpg" alt="disney" /></a>
+            <a href="#"><img src="./img/disney2.jpg" alt="disney" /></a>
         </div>
 
         <div class="container">
             <div class="row">
                 <c:forEach items="${requestScope.models}" var="movie">
                     <div class="vignette">
-                        <img src="http://via.placeholder.com/200x280" alt="${movie.title}" />
+                        <img src="${pageContext.request.contextPath}/img/${movie.image}" alt="${movie.title}" />
                         <div>
                             <h3>${movie.title}</h3>
                             <p>
