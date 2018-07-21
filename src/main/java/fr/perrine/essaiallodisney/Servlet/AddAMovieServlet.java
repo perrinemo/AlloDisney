@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @WebServlet(name = "AddAMovieServlet", urlPatterns = "/addamovie")
 @MultipartConfig
@@ -35,6 +37,9 @@ public class AddAMovieServlet extends HttpServlet {
         String duration = request.getParameter("duration");
         String year = request.getParameter("year");
         String resume = request.getParameter("resume");
+        String trailer = request.getParameter("trailer");
+
+        StringBuffer sb = new StringBuffer();
 
         ArrayList<String> songs = new ArrayList<>();
         ArrayList<String> url = new ArrayList<>();
@@ -66,14 +71,21 @@ public class AddAMovieServlet extends HttpServlet {
                 out.write(bytes, 0, read);
             }
 
+            if (trailer == null || trailer.isEmpty()) {
+                trailer = "";
+            } else {
+                trailer = trailer.replace("watch?v=", "embed/");
+            }
+
             try {
                 PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
-                        .prepareStatement("INSERT INTO movies VALUES(null, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+                        .prepareStatement("INSERT INTO movies VALUES(null, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
                 preparedStatement.setString(1, title);
                 preparedStatement.setString(2, year);
                 preparedStatement.setString(3, duration);
                 preparedStatement.setString(4, resume);
                 preparedStatement.setString(5, filename);
+                preparedStatement.setString(6, trailer);
                 preparedStatement.executeUpdate();
 
                 int movieId = 0;
