@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
     <jsp:include page="head.jsp"/>
     <body>
@@ -39,36 +41,29 @@
 
         <div class="col-sm-10 col-lg-5 content form">
             <h1>Modifier un film</h1>
-            <form method="post" action="${pageContext.request.contextPath}/editamovie" enctype="multipart/form-data">
-                <div class="form-group">
-                    <input type="text" class="form-control" required placeholder="ex : La Belle et la Bête" value="la belle et la bete" name="title" />
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" required placeholder="ex : 1h27" name="duration" />
-                </div>
-                <div class="form-group">
-                    <input type="number" min="1938" class="form-control" required placeholder="ex : 1991" name="year" />
-                </div>
-                <div class="form-group">
-                    <textarea type="text" class="form-control" required placeholder="Résumé" name="resume" id="resume" rows="4"></textarea>
-                    <p class="nb-char">Il vous reste <span id="reste_char"></span> caractères.</p>
-                </div>
-                <div class="form-control">
-                    <input type="file" name="file" required class="input-file form-control" />
-                </div>
-                <div class="form-group form-inline">
-                    <div class="input-group col-10 new-song">
-                        <input type="text" class="form-control col-6 song" placeholder="Ajouter une chanson (optionnel)" name="song[0]" />
-                        <input type="text" class="form-control col-6 song" placeholder="Lien youtube (optionnel)" name="url[0]" />
+            <c:forEach items="${requestScope.models}" var="movie">
+                <form method="post" action="${pageContext.request.contextPath}/editamovie" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input type="text" class="form-control" required placeholder="ex : La Belle et la Bête" value="${movie.title}" name="title" />
                     </div>
-                    <div class="input-group-prepend col-2">
-                        <div class="input-group-text">
-                            <button type="button" class="btn" id="add-a-song">+</button>
+                    <div class="form-group">
+                        <input type="text" class="form-control" required placeholder="ex : 1h27" value="${movie.duration}" name="duration" />
+                    </div>
+                    <div class="form-group">
+                        <input type="number" min="1938" class="form-control" required placeholder="ex : 1991" value="${movie.year}" name="year" />
+                    </div>
+                    <div class="form-group">
+                        <textarea type="text" class="form-control" required placeholder="Résumé" name="resume" id="resume" rows="4">${movie.resume}</textarea>
+                        <p class="nb-char">Il vous reste <span id="reste_char"></span> caractères.</p>
+                    </div>
+                    <c:if test="${empty movie.image}">
+                        <div class="form-control">
+                            <input type="file" name="file" required class="input-file form-control" />
                         </div>
-                    </div>
-                </div>
-                <button type="submit" class="btn">Ajouter</button>
-            </form>
+                    </c:if>
+                    <button type="submit" class="btn">Modifier</button>
+                </form>
+            </c:forEach>
         </div>
 
         <script type="text/javascript">
@@ -76,5 +71,7 @@
             maxlength_textarea('resume','reste_char',250);
             -->
         </script>
+
+        <jsp:include page="footer.jsp"/>
     </body>
 </html>
