@@ -40,12 +40,11 @@
         </script>
 
         <div class="col-sm-10 col-lg-5 content form">
-            <h1>Modifier un film</h1>
+
             <c:forEach items="${requestScope.models}" var="movie">
-                <form method="post" action="${pageContext.request.contextPath}/editamovie" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <input type="text" class="form-control" required placeholder="ex : La Belle et la Bête" value="${movie.title}" name="title" />
-                    </div>
+                <h1>${movie.title}</h1>
+                <form method="post" action="${pageContext.request.contextPath}/editamovie">
+                    <input type="hidden" name="id" value="${movie.id}" />
                     <div class="form-group">
                         <input type="text" class="form-control" required placeholder="ex : 1h27" value="${movie.duration}" name="duration" />
                     </div>

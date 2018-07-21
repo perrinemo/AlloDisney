@@ -13,12 +13,33 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 @WebServlet(name = "EditAMovieServlet", urlPatterns = "/editamovie")
 public class EditAMovieServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
 
+        String id = request.getParameter("id");
+        String duration = request.getParameter("duration");
+        String year = request.getParameter("year");
+        String resume = request.getParameter("resume");
+
+
+        try {
+            java.sql.PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
+                    .prepareStatement("UPDATE movies SET year = ?, duration = ?, resume = ? WHERE id = ?");
+            preparedStatement.setString(1, year);
+            preparedStatement.setString(2, duration);
+            preparedStatement.setString(3, resume);
+            preparedStatement.setString(4, id);
+            preparedStatement.executeUpdate();
+            response.sendRedirect("/moviepage?id=" + Integer.parseInt(id));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
