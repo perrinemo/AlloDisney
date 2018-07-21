@@ -121,7 +121,7 @@ public class AddAMovieServlet extends HttpServlet {
                 }
 
 
-                response.sendRedirect("/listmovie");
+                response.sendRedirect("/moviepage?id=" + movieId);
 
             } catch (SQLException e) {
                 e.printStackTrace();
