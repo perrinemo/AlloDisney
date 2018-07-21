@@ -23,6 +23,8 @@ public class EditAMovieServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
-        MoviePageServlet.getAMovie(request, response);
+        bdd.getAMovie(request, response);
+
+        this.getServletContext().getRequestDispatcher("/WEB-INF/editamovie.jsp").forward(request, response);
     }
 }

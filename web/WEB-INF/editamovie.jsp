@@ -38,10 +38,10 @@
         </script>
 
         <div class="col-sm-10 col-lg-5 content form">
-            <h1>Ajouter un nouveau film</h1>
+            <h1>Modifier un film</h1>
             <form method="post" action="${pageContext.request.contextPath}/editamovie" enctype="multipart/form-data">
                 <div class="form-group">
-                    <input type="text" class="form-control" required placeholder="ex : La Belle et la Bête" name="title" />
+                    <input type="text" class="form-control" required placeholder="ex : La Belle et la Bête" value="la belle et la bete" name="title" />
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" required placeholder="ex : 1h27" name="duration" />
