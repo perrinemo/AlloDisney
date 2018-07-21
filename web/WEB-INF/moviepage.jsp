@@ -15,7 +15,9 @@
         <jsp:include page="/WEB-INF/header.jsp" />
         <div class="movie-page col-10 col-lg-6 content">
             <c:forEach items="${requestScope.models}" var="movie">
-                <!--<i class="far fa-edit"></i>-->
+                <c:if test="${!empty sessionScope.user}">
+                    <button type="button" class="btn edit"><i class="far fa-edit"></i></button>
+                </c:if>
                 <h1>${movie.title}</h1>
                 <div class="container movie-content">
                     <div class="image">
