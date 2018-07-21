@@ -5,6 +5,7 @@ import fr.perrine.essaiallodisney.Model.MovieModel;
 import fr.perrine.essaiallodisney.Model.SongModel;
 import fr.perrine.essaiallodisney.Singleton.SingletonBDD;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,12 +18,20 @@ import java.util.ArrayList;
 
 @WebServlet(name = "MoviePageServlet", urlPatterns = "/moviepage")
 public class MoviePageServlet extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
+        getAMovie(request, response);
+
+
+        this.getServletContext().getRequestDispatcher("/WEB-INF/moviepage.jsp").forward(request, response);
+    }
+
+    public static void getAMovie(HttpServletRequest request, HttpServletResponse response) {
+        SingletonBDD bdd = SingletonBDD.getInstance(request.getServletContext());
         String id = request.getParameter("id");
 
         try {
@@ -38,7 +47,7 @@ public class MoviePageServlet extends HttpServlet {
 
             ArrayList<MovieModel> models = new ArrayList<>();
 
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 MovieModel movieModel = new MovieModel();
                 movieModel.setId(resultSet.getInt("id"));
                 movieModel.setTitle(resultSet.getString("title"));
@@ -66,7 +75,7 @@ public class MoviePageServlet extends HttpServlet {
 
             ArrayList<SongModel> songs = new ArrayList<>();
 
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 SongModel song = new SongModel();
                 song.setTitle(resultSet.getString("title_song"));
                 song.setVideo(resultSet.getString("video_song"));
@@ -83,7 +92,5 @@ public class MoviePageServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        this.getServletContext().getRequestDispatcher("/WEB-INF/moviepage.jsp").forward(request, response);
     }
 }
