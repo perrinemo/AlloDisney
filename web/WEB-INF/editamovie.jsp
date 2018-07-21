@@ -55,6 +55,9 @@
                         <textarea type="text" class="form-control" required placeholder="Résumé" name="resume" id="resume" rows="4">${movie.resume}</textarea>
                         <p class="nb-char">Il vous reste <span id="reste_char"></span> caractères.</p>
                     </div>
+                    <div class="form-group">
+                        <input type="text" name="trailer" placeholder="Bande annonce (lien youtube optionnel)" value="${movie.trailer}" class="form-control" />
+                    </div>
                     <c:if test="${empty movie.image}">
                         <div class="form-control">
                             <input type="file" name="file" required class="input-file form-control" />
