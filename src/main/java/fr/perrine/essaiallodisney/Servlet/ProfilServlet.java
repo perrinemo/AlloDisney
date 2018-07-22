@@ -49,6 +49,7 @@ public class ProfilServlet extends HttpServlet {
                 user.setId(resultSet.getInt("id"));
                 user.setPseudo(resultSet.getString("pseudo"));
                 user.setAvatar(resultSet.getString("avatar"));
+                user.setPassword(resultSet.getString("password"));
                 users.add(user);
             }
             request.setAttribute("users", users);

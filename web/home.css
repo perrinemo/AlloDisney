@@ -25,10 +25,6 @@ li {
     list-style-type: none;
 }
 
-a {
-    color: black;
-}
-
 a:hover {
     color: darkmagenta;
     text-decoration: none;
@@ -49,7 +45,7 @@ a:hover {
     text-align: right;
 }
 
-/****************** POPUP **********************/
+/****************** POPUP CONNEXION *************/
 @keyframes animatetop {
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
@@ -311,6 +307,10 @@ h3 {
     padding: 0;
 }
 
+.listmovie a {
+    color: black;
+}
+
 .listmovie li {
     font-size: 20px;
 }
@@ -324,6 +324,11 @@ h3 {
 .avatar {
     float: left;
     margin-right: 30px;
+}
+
+.fa-times {
+    float: right;
+    display: none;
 }
 
 h1 {
@@ -341,6 +346,15 @@ h1 {
 .profil .deconnexion {
     text-align: center;
     margin-bottom: 50px;
+}
+
+.profil-edit {
+    text-align: center;
+    display: none;
+}
+
+.profil-edit label {
+    text-align: left;
 }
 
 /****************** MEDIA QUERIES **************/
