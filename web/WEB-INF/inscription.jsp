@@ -10,12 +10,13 @@
 
 <html>
     <jsp:include page="/WEB-INF/head.jsp" />
+    <link rel="stylesheet" type="text/css" href="css/inscription.css" />
 
     <body>
         <jsp:include page="/WEB-INF/header.jsp" />
 
         <div class="col-4 mx-auto inscription content">
-            <h2>Je m'inscris :</h2>
+            <h1>Je m'inscris :</h1>
             <form method="post" action="${pageContext.request.contextPath}/inscription">
                 <div class="form-group">
                     <input type="text" class="form-control" required name="pseudo_inscription" placeholder="Pseudo" />

@@ -10,6 +10,8 @@
 
 <html>
     <jsp:include page="head.jsp" />
+    <link rel="stylesheet" type="text/css" href="css/listmovie.css" />
+
     <body>
         <jsp:include page="header.jsp"/>
 

@@ -37,7 +37,14 @@
                     <c:otherwise>
                         <li class="nav-item">
                             <a class="nav-link" href="${pageContext.request.contextPath}/profil?id=${sessionScope.user_id}">
-                                <img src="img/avatar.png" width="25px" height="auto" />
+                                <c:choose>
+                                    <c:when test="${empty sessionScope.avatar}">
+                                        <img src="/img/avatar.png">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <img src="img/${sessionScope.avatar}" />
+                                    </c:otherwise>
+                                </c:choose>
                             </a>
                         </li>
                     </c:otherwise>

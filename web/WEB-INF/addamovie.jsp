@@ -9,6 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <jsp:include page="/WEB-INF/head.jsp"/>
+    <link rel="stylesheet" type="text/css" href="css/addamovie.css" />
     <body>
         <jsp:include page="/WEB-INF/header.jsp"/>
 

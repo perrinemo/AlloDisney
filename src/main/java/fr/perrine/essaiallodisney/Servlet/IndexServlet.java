@@ -42,6 +42,7 @@ public class IndexServlet extends HttpServlet {
                 user.setId(resultSet.getInt("id"));
                 user.setPseudo(resultSet.getString("pseudo"));
                 user.setPassword(resultSet.getString("password"));
+                user.setAvatar(resultSet.getString("avatar"));
                 userModels.add(user);
             }
 
@@ -50,8 +51,11 @@ public class IndexServlet extends HttpServlet {
                         passwordConnexion.equals(userModels.get(i).getPassword())) {
                     HttpSession session = request.getSession();
                     session.setAttribute("user", pseudoConnexion);
+                    request.setAttribute("users", userModels);
                     int id = userModels.get(i).getId();
                     session.setAttribute("user_id", id);
+                    String avatar = userModels.get(i).getAvatar();
+                    session.setAttribute("avatar", avatar);
                     connexion = true;
                     response.sendRedirect("/index");
                 }
@@ -68,6 +72,7 @@ public class IndexServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
+        String id = request.getParameter("id");
 
         try {
             PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
@@ -90,6 +95,29 @@ public class IndexServlet extends HttpServlet {
                     models.add(movieModel);
             }
             request.setAttribute("models", models);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
+                    .prepareStatement("SELECT * FROM users WHERE id = ?");
+            preparedStatement.setInt(1, 1);
+            ResultSet resultSet = null;
+            try {
+                resultSet = preparedStatement.executeQuery();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            ArrayList<UserModel> users = new ArrayList<>();
+
+            while(resultSet.next()) {
+                UserModel user = new UserModel();
+                user.setAvatar(resultSet.getString("avatar"));
+                users.add(user);
+            }
+            request.setAttribute("users", users);
         } catch (SQLException e) {
             e.printStackTrace();
         }

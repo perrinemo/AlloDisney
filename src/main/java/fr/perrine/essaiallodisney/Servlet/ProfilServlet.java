@@ -48,7 +48,6 @@ public class ProfilServlet extends HttpServlet {
                 out.write(bytes, 0, read);
             }
 
-
             try {
                 com.mysql.jdbc.PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
                         .prepareStatement("UPDATE users SET pseudo = ?, password = ?, avatar = ? WHERE id = ?");

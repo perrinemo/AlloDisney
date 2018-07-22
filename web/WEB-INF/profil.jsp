@@ -10,6 +10,8 @@
 
 <html>
     <jsp:include page="head.jsp"/>
+    <link rel="stylesheet" type="text/css" href="css/profil.css" />
+
     <body>
         <jsp:include page="header.jsp"/>
 
@@ -26,7 +28,7 @@
                                 <img src="img/avatar.png" width="150px" height="auto" />
                             </c:when>
                             <c:otherwise>
-                                <img src="img/${user.avatar}" width="150px" height="auto" />
+                                <img src="img/${user.avatar}" />
                             </c:otherwise>
                         </c:choose>
                     </div>
@@ -42,11 +44,11 @@
                     <form method="post" action="${pageContext.request.contextPath}/profil" enctype="multipart/form-data">
                         <div class="avatar">
                             <c:choose>
-                                <c:when test="${empty requestScope.avatar}">
+                                <c:when test="${empty user.avatar}">
                                     <img src="img/avatar.png" width="150px" height="auto" />
                                 </c:when>
                                 <c:otherwise>
-                                    <img src="${requestScope.avatar}" width="150px" height="auto" />
+                                    <img src="img/${user.avatar}" />
                                 </c:otherwise>
                             </c:choose>
                         </div>
