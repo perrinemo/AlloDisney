@@ -1,11 +1,21 @@
 package fr.perrine.essaiallodisney.Model;
 
 public class UserModel {
+    private int id;
     private String email;
     private String password;
     private String pseudo;
+    private String avatar;
 
     public UserModel() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -30,5 +40,13 @@ public class UserModel {
 
     public void setPseudo(String pseudo) {
         this.pseudo = pseudo;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

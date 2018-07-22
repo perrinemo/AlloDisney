@@ -10,7 +10,10 @@
 
 <html>
     <jsp:include page="/WEB-INF/head.jsp" />
-<body>
+    <link rel="stylesheet" type="text/css" href="css/slider.css" />
+    <link rel="stylesheet" type="text/css" href="css/homepage.css" />
+
+    <body>
     <jsp:include page="/WEB-INF/header.jsp" />
     <div class="content">
         <div id="slider">

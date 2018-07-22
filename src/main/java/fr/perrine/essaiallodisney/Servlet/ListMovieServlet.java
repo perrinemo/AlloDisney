@@ -23,6 +23,8 @@ public class ListMovieServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
 
+        ArrayList<MovieModel> models = new ArrayList<>();
+
         try {
             PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
                     .prepareStatement("SELECT * FROM movies ORDER BY movies.year DESC");
@@ -33,7 +35,7 @@ public class ListMovieServlet extends HttpServlet {
                 e.printStackTrace();
             }
 
-            ArrayList<MovieModel> models = new ArrayList<>();
+
 
             while (resultSet.next()) {
                 MovieModel movie = new MovieModel();
@@ -48,6 +50,8 @@ public class ListMovieServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        request.setAttribute("nbMovies", models.size());
 
         this.getServletContext().getRequestDispatcher("/WEB-INF/listmovie.jsp").forward(request, response);
     }

@@ -10,6 +10,7 @@
 
 <html>
     <jsp:include page="/WEB-INF/head.jsp" />
+    <link rel="stylesheet" type="text/css" href="css/moviepage.css" />
 
     <body>
         <jsp:include page="/WEB-INF/header.jsp" />

@@ -10,10 +10,14 @@
 
 <html>
     <jsp:include page="head.jsp" />
+    <link rel="stylesheet" type="text/css" href="css/listmovie.css" />
+
     <body>
         <jsp:include page="header.jsp"/>
 
-        <h1 class="titlelist">Liste des films</h1>
+        <h1 class="titlelist">Liste des films
+            <small>(${requestScope.nbMovies})</small>
+        </h1>
 
         <ul class="content listmovie">
         <c:forEach items="${requestScope.listMovie}" var="movie">

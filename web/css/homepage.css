@@ -1,0 +1,37 @@
+@font-face {
+    font-family: Disney;
+    src: url("../fonts/waltograph42.otf");
+}
+
+/****************** VIGNETTES ******************/
+.bold {
+    font-weight: bold;
+}
+
+h3 {
+    padding-top: 10px;
+    font-family: Disney;
+    font-size: 2em;
+}
+
+.more {
+    float: right;
+    margin-right: 5px;
+}
+
+.vignette {
+    float: left;
+    margin-left: 2.5%;
+    width: 45%;
+    height: 330px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 20px;
+}
+
+.vignette img {
+    float: left;
+    width: 200px;
+    height: auto;
+    margin: 5px;
+}

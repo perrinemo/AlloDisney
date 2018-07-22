@@ -36,7 +36,16 @@
                     </c:when>
                     <c:otherwise>
                         <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/deconnexion" id="deconnexion" >Se déconnecter</a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/profil?id=${sessionScope.user_id}">
+                                <c:choose>
+                                    <c:when test="${empty sessionScope.avatar}">
+                                        <img src="/img/avatar.png">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <img src="img/${sessionScope.avatar}" />
+                                    </c:otherwise>
+                                </c:choose>
+                            </a>
                         </li>
                     </c:otherwise>
                 </c:choose>
@@ -58,7 +67,7 @@
                 <div class="form-group">
                     <input type="password" class="form-control"required  name="password_connexion" placeholder="Mot de passe" />
                 </div>
-                <button type="submit"id="btn-connection" class="btn">Connexion</button>
+                <button type="submit" id="btn-connection" class="btn mx-auto">Connexion</button>
             </form>
         </div>
         <div class="modal-footer">
