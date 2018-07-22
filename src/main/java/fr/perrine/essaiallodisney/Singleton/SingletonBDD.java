@@ -5,6 +5,7 @@ import com.mysql.jdbc.Driver;
 import com.mysql.jdbc.PreparedStatement;
 import fr.perrine.essaiallodisney.Model.MovieModel;
 import fr.perrine.essaiallodisney.Model.SongModel;
+import fr.perrine.essaiallodisney.Model.UserModel;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;

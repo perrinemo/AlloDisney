@@ -1,6 +1,7 @@
 package fr.perrine.essaiallodisney.Servlet;
 
 import fr.perrine.essaiallodisney.Model.MovieModel;
+import fr.perrine.essaiallodisney.Model.UserModel;
 import fr.perrine.essaiallodisney.Singleton.SingletonBDD;
 
 import javax.servlet.ServletException;
@@ -34,8 +35,6 @@ public class ListMovieServlet extends HttpServlet {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
-
 
             while (resultSet.next()) {
                 MovieModel movie = new MovieModel();

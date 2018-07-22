@@ -72,7 +72,7 @@ public class IndexServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
-        String id = request.getParameter("id");
+        Integer userId = (Integer) request.getSession().getAttribute("user_id");
 
         try {
             PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
@@ -99,30 +99,33 @@ public class IndexServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        try {
-            PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
-                    .prepareStatement("SELECT * FROM users WHERE id = ?");
-            preparedStatement.setInt(1, 1);
-            ResultSet resultSet = null;
+/*
+        if (userId != null) {
             try {
-                resultSet = preparedStatement.executeQuery();
+                PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
+                        .prepareStatement("SELECT * FROM users WHERE id = ?");
+                preparedStatement.setInt(1, userId);
+                ResultSet resultSet = null;
+                try {
+                    resultSet = preparedStatement.executeQuery();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+                ArrayList<UserModel> userModels = new ArrayList<>();
+
+                while (resultSet.next()) {
+                    UserModel userid = new UserModel();
+                    userid.setId(resultSet.getInt("id"));
+                    userid.setAvatar(resultSet.getString("avatar"));
+                    userModels.add(userid);
+                }
+                request.setAttribute("userid", userModels);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
-            ArrayList<UserModel> users = new ArrayList<>();
-
-            while(resultSet.next()) {
-                UserModel user = new UserModel();
-                user.setAvatar(resultSet.getString("avatar"));
-                users.add(user);
-            }
-            request.setAttribute("users", users);
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
-
+*/
         this.getServletContext().getRequestDispatcher("/WEB-INF/homepage.jsp").forward(request, response);
     }
 }
