@@ -36,7 +36,9 @@
                     </c:when>
                     <c:otherwise>
                         <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/deconnexion" id="deconnexion" >Se déconnecter</a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/profil?id=${sessionScope.user_id}">
+                                <img src="img/avatar.png" width="25px" height="auto" />
+                            </a>
                         </li>
                     </c:otherwise>
                 </c:choose>

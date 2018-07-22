@@ -27,7 +27,7 @@ public class IndexServlet extends HttpServlet {
 
         try {
             PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
-                    .prepareStatement("SELECT users.pseudo, users.password FROM users");
+                    .prepareStatement("SELECT * FROM users");
             ResultSet resultSet = null;
             try {
                 resultSet = preparedStatement.executeQuery();
@@ -39,6 +39,7 @@ public class IndexServlet extends HttpServlet {
 
             while (resultSet.next()) {
                 UserModel user = new UserModel();
+                user.setId(resultSet.getInt("id"));
                 user.setPseudo(resultSet.getString("pseudo"));
                 user.setPassword(resultSet.getString("password"));
                 userModels.add(user);
@@ -49,6 +50,8 @@ public class IndexServlet extends HttpServlet {
                         passwordConnexion.equals(userModels.get(i).getPassword())) {
                     HttpSession session = request.getSession();
                     session.setAttribute("user", pseudoConnexion);
+                    int id = userModels.get(i).getId();
+                    session.setAttribute("user_id", id);
                     connexion = true;
                     response.sendRedirect("/index");
                 }

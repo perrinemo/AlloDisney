@@ -39,6 +39,8 @@ public class AddAMovieServlet extends HttpServlet {
         String resume = request.getParameter("resume");
         String trailer = request.getParameter("trailer");
 
+        int userId = (Integer) request.getSession().getAttribute("user_id");
+
         StringBuffer sb = new StringBuffer();
 
         ArrayList<String> songs = new ArrayList<>();
@@ -79,13 +81,14 @@ public class AddAMovieServlet extends HttpServlet {
 
             try {
                 PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
-                        .prepareStatement("INSERT INTO movies VALUES(null, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+                        .prepareStatement("INSERT INTO movies VALUES(null, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
                 preparedStatement.setString(1, title);
                 preparedStatement.setString(2, year);
                 preparedStatement.setString(3, duration);
                 preparedStatement.setString(4, resume);
                 preparedStatement.setString(5, filename);
                 preparedStatement.setString(6, trailer);
+                preparedStatement.setInt(7, userId);
                 preparedStatement.executeUpdate();
 
                 int movieId = 0;
