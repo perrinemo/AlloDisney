@@ -140,6 +140,32 @@ public class ProfilServlet extends HttpServlet {
             e.printStackTrace();
         }
 
+        try {
+            PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
+                    .prepareStatement("SELECT * FROM movies WHERE id_users = ? ORDER BY id DESC LIMIT 1");
+            preparedStatement.setInt(1, Integer.parseInt(id));
+            ResultSet resultSet = null;
+            try {
+                resultSet = preparedStatement.executeQuery();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            ArrayList<MovieModel> lastmovie = new ArrayList<>();
+
+            while (resultSet.next()) {
+                MovieModel movie = new MovieModel();
+                movie.setId(resultSet.getInt("id"));
+                movie.setYear(resultSet.getInt("year"));
+                movie.setTitle(resultSet.getString("title"));
+                lastmovie.add(movie);
+            }
+            request.setAttribute("lastmovie", lastmovie);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         this.getServletContext().getRequestDispatcher("/WEB-INF/profil.jsp").forward(request, response);
     }
 

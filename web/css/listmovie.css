@@ -8,6 +8,10 @@
     color: black;
 }
 
+.listmovie a:hover {
+    color: darkmagenta;
+}
+
 .listmovie li {
     font-size: 20px;
 }

@@ -21,12 +21,17 @@ h3 {
 
 .vignette {
     float: left;
-    margin-left: 2.5%;
-    width: 45%;
+    margin-left: 2%;
+    width: 48%;
     height: 330px;
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 20px;
+    display: flex;
+}
+
+.vignette a {
+    bottom: 0;
 }
 
 .vignette img {

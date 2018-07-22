@@ -92,6 +92,7 @@ public class IndexServlet extends HttpServlet {
                     movieModel.setTitle(resultSet.getString("title"));
                     movieModel.setResume(resultSet.getString("resume"));
                     movieModel.setImage(resultSet.getString("image"));
+                    movieModel.setYear(resultSet.getInt("year"));
                     models.add(movieModel);
             }
             request.setAttribute("models", models);

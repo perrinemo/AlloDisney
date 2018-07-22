@@ -31,12 +31,13 @@
                         <img src="${pageContext.request.contextPath}/img/${movie.image}" alt="${movie.title}" />
                         <div>
                             <h3>${movie.title}</h3>
-                            <p>
+                            <div class="info">
+                                <span class="bold">Année : </span>${movie.year}
+                                <br />
                                 <span class="bold">Résumé :</span>
                                 <br />
                                 ${movie.resume}
-                            </p>
-
+                            </div>
                             <a href="${pageContext.request.contextPath}/moviepage?id=${movie.id}" class="more">Plus d'infos</a>
                         </div>
                     </div>

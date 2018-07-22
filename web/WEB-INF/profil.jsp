@@ -16,9 +16,11 @@
         <jsp:include page="header.jsp"/>
 
         <div class="content col-10 col-lg-6 profil">
-            <a href="#" id="edit"><i class="far fa-edit"></i></a>
             <h1>Mon profil</h1>
-            <p class="deconnexion"><small><a href="${pageContext.request.contextPath}/deconnexion">Se déconnecter</a></small></p>
+            <p class="deconnexion"><small>
+                <a href="#" id="edit">Modifier</a> /
+                <a href="${pageContext.request.contextPath}/deconnexion">Se déconnecter</a>
+            </small></p>
 
             <div class="profil-content mx-auto" id="profil">
                 <c:forEach items="${requestScope.users}" var="user">
@@ -35,6 +37,9 @@
                     <div class="info-user">
                         <p>Pseudo : <strong>${user.pseudo}</strong></p>
                         <p>Nombre de films ajoutés : <strong>${requestScope.nbMovie}</strong></p>
+                        <c:forEach items="${requestScope.lastmovie}" var="lastmovie">
+                            <p>Dernier film ajouté : <strong>${lastmovie.title} (${lastmovie.year})</strong></p>
+                        </c:forEach>
                     </div>
                 </c:forEach>
             </div>

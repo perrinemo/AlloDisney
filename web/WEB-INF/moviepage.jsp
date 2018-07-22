@@ -16,10 +16,16 @@
         <jsp:include page="/WEB-INF/header.jsp" />
         <div class="movie-page col-10 col-lg-6 content">
             <c:forEach items="${requestScope.models}" var="movie">
-                <c:if test="${!empty sessionScope.user}">
-                    <a href="${pageContext.request.contextPath}/editamovie?id=${movie.id}"><i class="far fa-edit"></i></a>
-                </c:if>
                 <h1>${movie.title}</h1>
+                <c:if test="${!empty sessionScope.user}">
+                    <p class="editMovie">
+                        <small>
+                            <a href="${pageContext.request.contextPath}/editamovie?id=${movie.id}">
+                                Modifier
+                            </a>
+                        </small>
+                    </p>
+                </c:if>
                 <div class="container movie-content">
                     <div class="image">
                         <img src="${pageContext.request.contextPath}/img/${movie.image}" alt="${movie.title}" />
