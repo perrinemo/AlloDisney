@@ -18,18 +18,17 @@
             <h1>Mon profil</h1>
             <p class="deconnexion"><small><a href="${pageContext.request.contextPath}/deconnexion">Se déconnecter</a></small></p>
 
-            <div class="profil-content" id="profil">
+            <div class="profil-content mx-auto" id="profil">
                 <c:forEach items="${requestScope.users}" var="user">
                     <div class="avatar">
                         <c:choose>
-                            <c:when test="${empty requestScope.avatar}">
+                            <c:when test="${empty user.avatar}">
                                 <img src="img/avatar.png" width="150px" height="auto" />
                             </c:when>
                             <c:otherwise>
-                                <img src="${requestScope.avatar}" width="150px" height="auto" />
+                                <img src="img/${user.avatar}" width="150px" height="auto" />
                             </c:otherwise>
                         </c:choose>
-
                     </div>
                     <div class="info-user">
                         <p>Pseudo : <strong>${user.pseudo}</strong></p>
@@ -37,9 +36,10 @@
                     </div>
                 </c:forEach>
             </div>
+
             <div class="profil-edit" id="edit-profil">
                 <c:forEach items="${requestScope.users}" var="user">
-                    <form>
+                    <form method="post" action="${pageContext.request.contextPath}/profil" enctype="multipart/form-data">
                         <div class="avatar">
                             <c:choose>
                                 <c:when test="${empty requestScope.avatar}">
@@ -51,15 +51,19 @@
                             </c:choose>
                         </div>
                         <div class="form-edit">
+                            <input type="hidden" name="id-edit" value="${user.id}" />
                             <div class="info-ser form-group row">
                                 <label class="col-4 col-form-label">Pseudo : </label>
-                                <input type="text" value="${user.pseudo}" placeholder="Pseudo" />
+                                <input type="text" name="pseudo-edit" value="${user.pseudo}" placeholder="Pseudo" />
                             </div>
                             <div class="info-ser form-group row">
                                 <label class="col-4 col-form-label">Nouveau mot de passe : </label>
-                                <input type="password" value="${user.password}" placeholder="Mot de passe" />
+                                <input type="password" name="password-edit" value="${user.password}" placeholder="Mot de passe" />
                             </div>
-
+                            <div class="info-ser form-group row">
+                                <label class="col-4 col-form-label">Nouvel avatar : </label>
+                                <input type="file" name="avatar-edit" class="input-file" value="${user.avatar}" />
+                            </div>
                         </div>
                         <button type="button" class="btn" id="cancel">Annuler</button>
                         <button type="submit" class="btn">Modifier</button>

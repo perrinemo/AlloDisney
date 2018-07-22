@@ -60,7 +60,7 @@
                 <div class="form-group">
                     <input type="password" class="form-control"required  name="password_connexion" placeholder="Mot de passe" />
                 </div>
-                <button type="submit"id="btn-connection" class="btn">Connexion</button>
+                <button type="submit" id="btn-connection" class="btn mx-auto">Connexion</button>
             </form>
         </div>
         <div class="modal-footer">

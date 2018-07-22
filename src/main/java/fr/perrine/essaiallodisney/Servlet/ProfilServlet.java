@@ -5,20 +5,79 @@ import fr.perrine.essaiallodisney.Model.UserModel;
 import fr.perrine.essaiallodisney.Singleton.SingletonBDD;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import javax.servlet.http.*;
+import java.io.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet(name = "ProfilServlet", urlPatterns = "/profil")
+@MultipartConfig
 public class ProfilServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    private final static Logger LOGGER = Logger.getLogger(IndexServlet.class.getCanonicalName());
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
+
+        String id = request.getParameter("id-edit");
+        String pseudo = request.getParameter("pseudo-edit");
+        String password = request.getParameter("password-edit");
+
+        String path = request.getSession().getServletContext().getRealPath("/img");
+        new File(path).mkdirs();
+        final Part filePart = request.getPart("avatar-edit");
+        final String avatar = getFileName(filePart);
+        OutputStream out = null;
+        InputStream filecontent = null;
+        final PrintWriter writer = response.getWriter();
+
+        try {
+            out = new FileOutputStream(new File(path + File.separator + avatar));
+            filecontent = filePart.getInputStream();
+            int read = 0;
+            final byte[] bytes = new byte[1024];
+
+            while ((read = filecontent.read(bytes)) != -1) {
+                out.write(bytes, 0, read);
+            }
+
+
+            try {
+                com.mysql.jdbc.PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
+                        .prepareStatement("UPDATE users SET pseudo = ?, password = ?, avatar = ? WHERE id = ?");
+                preparedStatement.setString(1, pseudo);
+                preparedStatement.setString(2, password);
+                preparedStatement.setString(3, avatar);
+                preparedStatement.setString(4, id);
+                preparedStatement.executeUpdate();
+
+                response.sendRedirect("/profil?id=" + Integer.parseInt(id));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (FileNotFoundException e) {
+            writer.println("You either did not specify a file to upload or are trying to upload a file to a protected " +
+                    "or nonexistent location");
+            writer.println("<br />ERROR: " + e.getMessage());
+            LOGGER.log(Level.SEVERE, "Problems during file upload. Error: {0}", new Object[]{e.getMessage()});
+        } finally {
+            if (out != null) {
+                out.close();
+            }
+            if (filecontent != null) {
+                filecontent.close();
+            }
+            if (writer != null) {
+                writer.close();
+            }
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -83,5 +142,16 @@ public class ProfilServlet extends HttpServlet {
         }
 
         this.getServletContext().getRequestDispatcher("/WEB-INF/profil.jsp").forward(request, response);
+    }
+
+    private String getFileName(final Part part) {
+        final String partHeader = part.getHeader("content-disposition");
+        LOGGER.log(Level.INFO, "Part Header = {0}", partHeader);
+        for (String content : part.getHeader("content-disposition").split(";")) {
+            if (content.trim().startsWith("filename")) {
+                return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
+            }
+        }
+        return null;
     }
 }

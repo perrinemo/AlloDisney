@@ -51,10 +51,6 @@ a:hover {
     to {top:0; opacity:1}
 }
 
-#btn-connection {
-    margin: 0 auto;
-}
-
 .close {
     text-align: right;
     font-size: 28px;
@@ -324,6 +320,10 @@ h3 {
 .avatar {
     float: left;
     margin-right: 30px;
+}
+
+.avatar img {
+    border-radius: 50%;
 }
 
 .fa-times {
