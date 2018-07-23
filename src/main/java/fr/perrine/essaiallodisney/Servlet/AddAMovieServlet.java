@@ -41,8 +41,6 @@ public class AddAMovieServlet extends HttpServlet {
 
         int userId = (Integer) request.getSession().getAttribute("user_id");
 
-        StringBuffer sb = new StringBuffer();
-
         ArrayList<String> songs = new ArrayList<>();
         ArrayList<String> url = new ArrayList<>();
 
