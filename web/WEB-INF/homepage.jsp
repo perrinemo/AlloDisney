@@ -9,9 +9,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <html>
-    <jsp:include page="/WEB-INF/head.jsp" />
-    <link rel="stylesheet" type="text/css" href="css/slider.css" />
-    <link rel="stylesheet" type="text/css" href="css/homepage.css" />
+    <head>
+        <jsp:include page="head.jsp"/>
+        <link rel="stylesheet" type="text/css" href="css/slider.css" />
+        <link rel="stylesheet" type="text/css" href="css/homepage.css" />
+    </head>
 
     <body>
     <jsp:include page="/WEB-INF/header.jsp" />
@@ -46,6 +48,6 @@
         </div>
     </div>
 
-    <jsp:include page="/WEB-INF/footer.jsp" />
+    <jsp:include page="footer.jsp" />
 </body>
 </html>

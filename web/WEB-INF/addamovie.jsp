@@ -8,10 +8,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-    <jsp:include page="/WEB-INF/head.jsp"/>
-    <link rel="stylesheet" type="text/css" href="css/addamovie.css" />
+    <head>
+        <jsp:include page="head.jsp"/>
+        <link rel="stylesheet" type="text/css" href="css/addamovie.css" />
+    </head>
+
     <body>
-        <jsp:include page="/WEB-INF/header.jsp"/>
+        <jsp:include page="header.jsp"/>
 
         <script type="text/javascript">
             <!--
@@ -81,6 +84,6 @@
             maxlength_textarea('resume','reste_char',250);
         -->
         </script>
-        <jsp:include page="/WEB-INF/footer.jsp"/>
+        <jsp:include page="footer.jsp"/>
     </body>
 </html>

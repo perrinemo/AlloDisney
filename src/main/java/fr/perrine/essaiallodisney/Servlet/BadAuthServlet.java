@@ -58,9 +58,6 @@ public class BadAuthServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
-        bdd.getAvatar(request, response);
-
-        this.getServletContext().getRequestDispatcher("/WEB-INF/badAuth.jsp").forward(request, response);
+         this.getServletContext().getRequestDispatcher("/WEB-INF/badAuth.jsp").forward(request, response);
     }
 }

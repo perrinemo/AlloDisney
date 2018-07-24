@@ -8,12 +8,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-    <jsp:include page="head.jsp"/>
+    <head>
+        <jsp:include page="head.jsp"/>
+    </head>
+
     <body>
         <jsp:include page="header.jsp"/>
-        <div class="col-5 content">
+        <div class="col-5 content mx-auto" style="margin-top: 50px">
             <div class="modal-body">
-                <h2 id="title-popup">Se connecter à AlloDisney</h2>
+                <h1 id="title-popup">Se connecter à AlloDisney</h1>
                 <form method="post" action="${pageContext.request.contextPath}/badauth">
                     <div class="form-group">
                         <input type="text" class="form-control" required name="pseudo_connexion" placeholder="Pseudo" />
@@ -25,7 +28,7 @@
                 </form>
                 <p>Pseudo ou mot de passe inconnu</p>
             </div>
-            <div class="modal-footer">
+            <div>
                 <p>Pas encore inscrit ? <a href="${pageContext.request.contextPath}/inscription" id="inscription">S'inscrire maintenant</a></p>
             </div>
         </div>

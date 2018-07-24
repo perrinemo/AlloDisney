@@ -31,7 +31,6 @@ public class AddAMovieServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
 
-        Map<String, String[]> map = request.getParameterMap();
 
         String title = request.getParameter("title");
         String duration = request.getParameter("duration");
@@ -41,6 +40,8 @@ public class AddAMovieServlet extends HttpServlet {
 
         int userId = (Integer) request.getSession().getAttribute("user_id");
 
+        // Récupérer les inputs de chansons avec leur url
+        Map<String, String[]> map = request.getParameterMap();
         ArrayList<String> songs = new ArrayList<>();
         ArrayList<String> url = new ArrayList<>();
 
@@ -53,6 +54,7 @@ public class AddAMovieServlet extends HttpServlet {
             }
         }
 
+        // Enregistrement de l'image
         String path = request.getSession().getServletContext().getRealPath("/img");
         new File(path).mkdirs();
         final Part filePart = request.getPart("file");
@@ -71,6 +73,7 @@ public class AddAMovieServlet extends HttpServlet {
                 out.write(bytes, 0, read);
             }
 
+            // Changer l'url youtube pour afficher la vidéo
             if (trailer == null || trailer.isEmpty()) {
                 trailer = "";
             } else {
@@ -149,6 +152,7 @@ public class AddAMovieServlet extends HttpServlet {
         Integer userId = (Integer) request.getSession().getAttribute("user_id");
         SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
         bdd.getAvatar(request, response);
+
         String userPseudo = (String) request.getSession().getAttribute("user");
         if (userPseudo == null || userPseudo.isEmpty()) {
             response.sendRedirect("/");
