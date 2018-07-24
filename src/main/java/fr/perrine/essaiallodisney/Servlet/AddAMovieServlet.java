@@ -41,8 +41,6 @@ public class AddAMovieServlet extends HttpServlet {
 
         int userId = (Integer) request.getSession().getAttribute("user_id");
 
-        StringBuffer sb = new StringBuffer();
-
         ArrayList<String> songs = new ArrayList<>();
         ArrayList<String> url = new ArrayList<>();
 
@@ -148,6 +146,9 @@ public class AddAMovieServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Integer userId = (Integer) request.getSession().getAttribute("user_id");
+        SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
+        bdd.getAvatar(request, response);
         String userPseudo = (String) request.getSession().getAttribute("user");
         if (userPseudo == null || userPseudo.isEmpty()) {
             response.sendRedirect("/");

@@ -52,6 +52,7 @@ public class EditAMovieServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
         bdd.getAMovie(request, response);
+        bdd.getAvatar(request, response);
 
         String userPseudo = (String) request.getSession().getAttribute("user");
         if (userPseudo == null || userPseudo.isEmpty()) {

@@ -87,6 +87,7 @@ public class ProfilServlet extends HttpServlet {
         }
 
         SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
+        bdd.getAvatar(request, response);
         String id = request.getParameter("id");
 
         try {
