@@ -31,8 +31,8 @@ public class InscriptionServlet extends HttpServlet {
             preparedStatement.setString(3, pseudoInscription);
             preparedStatement.executeUpdate();
 
+            // génère l'id de l'insert into
             int id = 0;
-
             try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     id = generatedKeys.getInt(1);
