@@ -52,7 +52,7 @@ public class IndexServlet extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("user", pseudoConnexion);
                     request.setAttribute("users", userModels);
-                    int id = userModels.get(i).getId();
+                    String id = String.valueOf(userModels.get(i).getId());
                     session.setAttribute("user_id", id);
                     connexion = true;
                     response.sendRedirect("/index");

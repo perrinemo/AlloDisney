@@ -38,7 +38,7 @@ public class AddAMovieServlet extends HttpServlet {
         String resume = request.getParameter("resume");
         String trailer = request.getParameter("trailer");
 
-        int userId = (Integer) request.getSession().getAttribute("user_id");
+        String userId = (String) request.getSession().getAttribute("user_id");
 
         // Récupérer les inputs de chansons avec leur url
         Map<String, String[]> map = request.getParameterMap();
@@ -89,7 +89,7 @@ public class AddAMovieServlet extends HttpServlet {
                 preparedStatement.setString(4, resume);
                 preparedStatement.setString(5, filename);
                 preparedStatement.setString(6, trailer);
-                preparedStatement.setInt(7, userId);
+                preparedStatement.setString(7, userId);
                 preparedStatement.executeUpdate();
 
                 int movieId = 0;
@@ -149,7 +149,7 @@ public class AddAMovieServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Integer userId = (Integer) request.getSession().getAttribute("user_id");
+        String userId = (String) request.getSession().getAttribute("user_id");
         SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
         bdd.getAvatar(request, response);
 
