@@ -37,14 +37,16 @@
                     <c:otherwise>
                         <li class="nav-item">
                             <a class="nav-link" href="${pageContext.request.contextPath}/profil?id=${sessionScope.user_id}">
-                                <c:choose>
-                                    <c:when test="${empty sessionScope.avatar}">
-                                        <img src="/img/avatar.png">
-                                    </c:when>
-                                    <c:otherwise>
-                                        <img src="img/${sessionScope.avatar}" />
-                                    </c:otherwise>
-                                </c:choose>
+                                <c:forEach items="${requestScope.userid}" var="avatar">
+                                    <c:choose>
+                                        <c:when test="${empty avatar.avatar}">
+                                            <img src="/img/avatar.png">
+                                        </c:when>
+                                        <c:otherwise>
+                                            <img src="img/${avatar.avatar}" />
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
                             </a>
                         </li>
                     </c:otherwise>

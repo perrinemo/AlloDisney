@@ -26,6 +26,7 @@ public class MoviePageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
         bdd.getAMovie(request, response);
+        bdd.getAvatar(request, response);
 
         this.getServletContext().getRequestDispatcher("/WEB-INF/moviepage.jsp").forward(request, response);
     }

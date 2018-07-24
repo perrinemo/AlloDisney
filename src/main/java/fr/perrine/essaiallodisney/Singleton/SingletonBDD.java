@@ -112,4 +112,35 @@ public class SingletonBDD {
             e.printStackTrace();
         }
     }
+
+    public void getAvatar(HttpServletRequest request, HttpServletResponse response) {
+        SingletonBDD bdd = SingletonBDD.getInstance(request.getServletContext());
+        Integer userId = (Integer) request.getSession().getAttribute("user_id");
+
+        if (userId != null) {
+            try {
+                PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
+                        .prepareStatement("SELECT * FROM users WHERE id = ?");
+                preparedStatement.setInt(1, userId);
+                ResultSet resultSet = null;
+                try {
+                    resultSet = preparedStatement.executeQuery();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+                ArrayList<UserModel> userModels = new ArrayList<>();
+
+                while (resultSet.next()) {
+                    UserModel userid = new UserModel();
+                    userid.setId(resultSet.getInt("id"));
+                    userid.setAvatar(resultSet.getString("avatar"));
+                    userModels.add(userid);
+                }
+                request.setAttribute("userid", userModels);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
