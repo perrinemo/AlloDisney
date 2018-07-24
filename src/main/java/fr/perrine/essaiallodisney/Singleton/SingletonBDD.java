@@ -115,9 +115,12 @@ public class SingletonBDD {
 
     public void getAvatar(HttpServletRequest request, HttpServletResponse response) {
         SingletonBDD bdd = SingletonBDD.getInstance(request.getServletContext());
-        Integer userId = (Integer) request.getSession().getAttribute("user_id");
+        Integer userId = null;
 
-        if (userId != null) {
+        String userIdAttribute = (String) request.getSession().getAttribute("user_id");
+
+        if (userIdAttribute != null) {
+            userId = Integer.parseInt(userIdAttribute);
             try {
                 PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
                         .prepareStatement("SELECT * FROM users WHERE id = ?");
@@ -134,7 +137,11 @@ public class SingletonBDD {
                 while (resultSet.next()) {
                     UserModel userid = new UserModel();
                     userid.setId(resultSet.getInt("id"));
-                    userid.setAvatar(resultSet.getString("avatar"));
+                    String avatar = resultSet.getString("avatar");
+                    if (avatar == null || avatar.isEmpty()) {
+                        avatar = "avatar.png";
+                    }
+                    userid.setAvatar(avatar);
                     userModels.add(userid);
                 }
                 request.setAttribute("userid", userModels);
