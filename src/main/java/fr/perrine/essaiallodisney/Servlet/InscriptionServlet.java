@@ -25,27 +25,41 @@ public class InscriptionServlet extends HttpServlet {
 
         try {
             PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
-                    .prepareStatement("INSERT INTO users VALUES(null, ?, ?, ?, null)", Statement.RETURN_GENERATED_KEYS);
+                    .prepareStatement("SELECT email FROM users WHERE email = ? OR pseudo = ?");
             preparedStatement.setString(1, emailInscription);
-            preparedStatement.setString(2, passwordInscription);
-            preparedStatement.setString(3, pseudoInscription);
-            preparedStatement.executeUpdate();
+            preparedStatement.setString(2, pseudoInscription);
+            ResultSet resultSet = null;
 
-            // génère l'id de l'insert into
-            int id = 0;
-            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    id = generatedKeys.getInt(1);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                request.setAttribute("error", "Compte déjà existant");
+            } else {
+
+                PreparedStatement preparedStatement1 = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
+                        .prepareStatement("INSERT INTO users VALUES(null, ?, ?, ?, null)", Statement.RETURN_GENERATED_KEYS);
+                preparedStatement1.setString(1, emailInscription);
+                preparedStatement1.setString(2, passwordInscription);
+                preparedStatement1.setString(3, pseudoInscription);
+                preparedStatement1.executeUpdate();
+
+                // génère l'id de l'insert into
+                int id = 0;
+                try (ResultSet generatedKeys = preparedStatement1.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        id = generatedKeys.getInt(1);
+                    } else {
+                        throw new SQLException("Creating user failed, no ID obtained.");
+                    }
                 }
-                else {
-                    throw new SQLException("Creating user failed, no ID obtained.");
-                }
+
+                HttpSession session = request.getSession();
+                session.setAttribute("user", pseudoInscription);
+                session.setAttribute("user_id", String.valueOf(id));
+                response.sendRedirect("/index");
+                return;
             }
+            this.getServletContext().getRequestDispatcher("/WEB-INF/inscription.jsp").forward(request, response);
 
-            HttpSession session = request.getSession();
-            session.setAttribute("user", pseudoInscription);
-            session.setAttribute("user_id", String.valueOf(id));
-            response.sendRedirect("/index");
         } catch (SQLException e) {
             e.printStackTrace();
         }

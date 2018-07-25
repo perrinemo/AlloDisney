@@ -33,6 +33,9 @@
                     <a href="${pageContext.request.contextPath}/index">Déjà inscrit ?</a>
                 </p>
                 <button type="submit" class="btn">Inscription</button>
+                <c:if test="${!empty requestScope.error}">
+                    <p>${requestScope.error}</p>
+                </c:if>
             </form>
         </div>
 

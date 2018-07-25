@@ -27,13 +27,11 @@ public class IndexServlet extends HttpServlet {
 
         try {
             PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
-                    .prepareStatement("SELECT * FROM users");
+                    .prepareStatement("SELECT * FROM users where pseudo = ?");
+            preparedStatement.setString(1, pseudoConnexion);
             ResultSet resultSet = null;
-            try {
-                resultSet = preparedStatement.executeQuery();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            resultSet = preparedStatement.executeQuery();
+
 
             ArrayList<UserModel> userModels = new ArrayList<>();
 
