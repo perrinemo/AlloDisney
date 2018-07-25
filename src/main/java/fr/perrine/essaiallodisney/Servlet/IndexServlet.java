@@ -27,7 +27,7 @@ public class IndexServlet extends HttpServlet {
 
         try {
             PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
-                    .prepareStatement("SELECT * FROM users");
+                    .prepareStatement("SELECT * FROM users where ");
             ResultSet resultSet = null;
             try {
                 resultSet = preparedStatement.executeQuery();
