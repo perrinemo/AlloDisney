@@ -34,7 +34,7 @@
                 </p>
                 <button type="submit" class="btn">Inscription</button>
                 <c:if test="${!empty requestScope.error}">
-                    <p>${requestScope.error}</p>
+                    <p class="msg-error">${requestScope.error}</p>
                 </c:if>
             </form>
         </div>
