@@ -1,5 +1,6 @@
 package fr.perrine.essaiallodisney.Servlet;
 
+import fr.perrine.essaiallodisney.Helper.HashPassHelper;
 import fr.perrine.essaiallodisney.Model.MovieModel;
 import fr.perrine.essaiallodisney.Model.UserModel;
 import fr.perrine.essaiallodisney.Singleton.SingletonBDD;
@@ -52,7 +53,7 @@ public class ProfilServlet extends HttpServlet {
                 com.mysql.jdbc.PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
                         .prepareStatement("UPDATE users SET pseudo = ?, password = ?, avatar = ? WHERE id = ?");
                 preparedStatement.setString(1, pseudo);
-                preparedStatement.setString(2, password);
+                preparedStatement.setString(2, HashPassHelper.hashPass(password));
                 preparedStatement.setString(3, avatar);
                 preparedStatement.setString(4, id);
                 preparedStatement.executeUpdate();

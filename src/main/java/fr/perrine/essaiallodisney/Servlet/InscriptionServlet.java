@@ -1,6 +1,7 @@
 package fr.perrine.essaiallodisney.Servlet;
 
 import com.mysql.jdbc.PreparedStatement;
+import fr.perrine.essaiallodisney.Helper.HashPassHelper;
 import fr.perrine.essaiallodisney.Singleton.SingletonBDD;
 
 import javax.servlet.ServletException;
@@ -24,19 +25,6 @@ public class InscriptionServlet extends HttpServlet {
         String emailInscription = request.getParameter("email_inscription");
         String passwordInscription = request.getParameter("password_inscription");
         String pseudoInscription = request.getParameter("pseudo_inscription");
-        String passwordHash = null;
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            md.update(passwordInscription.getBytes());
-            byte[] bytes = md.digest();
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < bytes.length; i++) {
-                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-            }
-            passwordHash = sb.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
 
         try {
             PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
@@ -53,7 +41,7 @@ public class InscriptionServlet extends HttpServlet {
                 PreparedStatement preparedStatement1 = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
                         .prepareStatement("INSERT INTO users VALUES(null, ?, ?, ?, null)", Statement.RETURN_GENERATED_KEYS);
                 preparedStatement1.setString(1, emailInscription);
-                preparedStatement1.setString(2, passwordHash);
+                preparedStatement1.setString(2, HashPassHelper.hashPass(passwordInscription));
                 preparedStatement1.setString(3, pseudoInscription);
                 preparedStatement1.executeUpdate();
 
