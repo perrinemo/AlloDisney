@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -24,6 +26,20 @@ public class IndexServlet extends HttpServlet {
 
         String pseudoConnexion = request.getParameter("pseudo_connexion");
         String passwordConnexion = request.getParameter("password_connexion");
+
+        String passwordHash = null;
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(passwordConnexion.getBytes());
+            byte[] bytes = md.digest();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < bytes.length; i++) {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            passwordHash = sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
 
         try {
             PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
@@ -46,7 +62,7 @@ public class IndexServlet extends HttpServlet {
 
             for (int i = 0; i < userModels.size(); i++) {
                 if (pseudoConnexion.equals(userModels.get(i).getPseudo()) &&
-                        passwordConnexion.equals(userModels.get(i).getPassword())) {
+                        passwordHash.equals(userModels.get(i).getPassword())) {
                     HttpSession session = request.getSession();
                     session.setAttribute("user", pseudoConnexion);
                     request.setAttribute("users", userModels);
