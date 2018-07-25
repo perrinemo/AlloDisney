@@ -76,6 +76,9 @@
                     </div>
                 </div>
                 <button type="submit" class="btn">Ajouter</button>
+                <c:if test="${!empty requestScope.error}">
+                    <p class="msg-error">${requestScope.error}</p>
+                </c:if>
             </form>
         </div>
 

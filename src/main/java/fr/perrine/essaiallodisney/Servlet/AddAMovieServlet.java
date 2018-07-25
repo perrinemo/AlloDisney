@@ -81,52 +81,60 @@ public class AddAMovieServlet extends HttpServlet {
             }
 
             try {
-                PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
-                        .prepareStatement("INSERT INTO movies VALUES(null, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
-                preparedStatement.setString(1, title);
-                preparedStatement.setString(2, year);
-                preparedStatement.setString(3, duration);
-                preparedStatement.setString(4, resume);
-                preparedStatement.setString(5, filename);
-                preparedStatement.setString(6, trailer);
-                preparedStatement.setString(7, userId);
-                preparedStatement.executeUpdate();
+                PreparedStatement preparedStatement1 = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
+                        .prepareStatement("SELECT title FROM movies where title = ? AND year = ?");
+                preparedStatement1.setString(1, title);
+                preparedStatement1.setString(2, year);
+                ResultSet resultSet = null;
+                resultSet = preparedStatement1.executeQuery();
+                if (resultSet.next()) {
+                    request.setAttribute("error", "Film déjà ajouté");
+                } else {
+                    PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
+                            .prepareStatement("INSERT INTO movies VALUES(null, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+                    preparedStatement.setString(1, title);
+                    preparedStatement.setString(2, year);
+                    preparedStatement.setString(3, duration);
+                    preparedStatement.setString(4, resume);
+                    preparedStatement.setString(5, filename);
+                    preparedStatement.setString(6, trailer);
+                    preparedStatement.setString(7, userId);
+                    preparedStatement.executeUpdate();
+                    int movieId = 0;
 
-                int movieId = 0;
-
-                try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
-                    if (generatedKeys.next()) {
-                        movieId = generatedKeys.getInt(1);
+                    try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                        if (generatedKeys.next()) {
+                            movieId = generatedKeys.getInt(1);
+                        }
+                        else {
+                            throw new SQLException("Creating user failed, no ID obtained.");
+                        }
                     }
-                    else {
-                        throw new SQLException("Creating user failed, no ID obtained.");
+
+                    for (int i = 0; i < songs.size(); i++) {
+                        String addSong = songs.get(i);
+                        String urlVideo = "";
+                        if (!url.get(i).isEmpty()) {
+                            urlVideo = url.get(i);
+                        } else {
+                            urlVideo = null;
+                        }
+                        try {
+                            PreparedStatement preparedStatement2 = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
+                                    .prepareStatement("INSERT INTO songs VALUES(null, ?, ?, ?)");
+
+                            preparedStatement2.setString(1, addSong);
+                            preparedStatement2.setString(2, urlVideo);
+                            preparedStatement2.setInt(3, movieId);
+                            preparedStatement2.executeUpdate();
+                            response.sendRedirect("/moviepage?id=" + movieId);
+                            return;
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
-
-                for (int i = 0; i < songs.size(); i++) {
-                    String addSong = songs.get(i);
-                    String urlVideo = "";
-                    if (!url.get(i).isEmpty()) {
-                        urlVideo = url.get(i);
-                    } else {
-                        urlVideo = null;
-                    }
-                    try {
-                        PreparedStatement preparedStatement1 = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
-                                .prepareStatement("INSERT INTO songs VALUES(null, ?, ?, ?)");
-
-                        preparedStatement1.setString(1, addSong);
-                        preparedStatement1.setString(2, urlVideo);
-                        preparedStatement1.setInt(3, movieId);
-                        preparedStatement1.executeUpdate();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-
-                response.sendRedirect("/moviepage?id=" + movieId);
-
+                this.getServletContext().getRequestDispatcher("/WEB-INF/addamovie.jsp").forward(request, response);
             } catch (SQLException e) {
                 e.printStackTrace();
             }

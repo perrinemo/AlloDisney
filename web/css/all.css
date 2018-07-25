@@ -34,6 +34,11 @@ li {
     list-style-type: none;
 }
 
+.msg-error {
+    color: red;
+    margin-top: 20px;
+}
+
 /****************** MEDIA QUERIES **************/
 @media screen and (max-width: 980px) {
     .vignette {
