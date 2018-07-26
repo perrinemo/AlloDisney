@@ -10,12 +10,12 @@
 
 <html>
     <head>
-        <jsp:include page="head.jsp"/>
-        <link rel="stylesheet" type="text/css" href="css/addamovie.css" />
+        <jsp:include page="/WEB-INF/head.jsp"/>
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/addamovie.css" />
     </head>
 
     <body>
-        <jsp:include page="header.jsp" />
+        <jsp:include page="/WEB-INF/header.jsp" />
 
         <script type="text/javascript">
             <!--
@@ -78,6 +78,6 @@
             -->
         </script>
 
-        <jsp:include page="footer.jsp"/>
+        <jsp:include page="/WEB-INF/footer.jsp"/>
     </body>
 </html>

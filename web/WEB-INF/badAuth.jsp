@@ -9,11 +9,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <jsp:include page="head.jsp"/>
+        <jsp:include page="/WEB-INF/head.jsp"/>
     </head>
 
     <body>
-        <jsp:include page="header.jsp"/>
+        <jsp:include page="/WEB-INF/header.jsp"/>
         <div class="col-5 content mx-auto" style="margin-top: 50px">
             <div class="modal-body">
                 <h1 id="title-popup">Se connecter à AlloDisney</h1>
@@ -32,6 +32,6 @@
                 <p>Pas encore inscrit ? <a href="${pageContext.request.contextPath}/inscription" id="inscription">S'inscrire maintenant</a></p>
             </div>
         </div>
-        <jsp:include page="footer.jsp"/>
+        <jsp:include page="/WEB-INF/footer.jsp"/>
     </body>
 </html>

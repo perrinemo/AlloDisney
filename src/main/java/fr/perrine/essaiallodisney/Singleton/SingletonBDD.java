@@ -42,7 +42,7 @@ public class SingletonBDD {
             driverClass = Class.forName("com.mysql.jdbc.Driver");
             Driver driver = (Driver) driverClass.newInstance();
             DriverManager.registerDriver(driver);
-            mConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/disney?useUnicode=true&amp;characterEncoding=utf8", "root", mdp);
+            mConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/disney?useUnicode=true&amp;characterEncoding=utf8", "wcs", mdp);
         } catch (IllegalAccessException | InstantiationException | SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

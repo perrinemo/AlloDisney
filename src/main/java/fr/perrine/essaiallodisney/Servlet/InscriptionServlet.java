@@ -58,7 +58,7 @@ public class InscriptionServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", pseudoInscription);
                 session.setAttribute("user_id", String.valueOf(id));
-                response.sendRedirect("/index");
+                response.sendRedirect(request.getContextPath() +"/index");
                 return;
             }
             this.getServletContext().getRequestDispatcher("/WEB-INF/inscription.jsp").forward(request, response);

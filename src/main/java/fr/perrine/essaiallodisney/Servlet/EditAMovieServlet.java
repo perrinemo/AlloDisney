@@ -43,7 +43,7 @@ public class EditAMovieServlet extends HttpServlet {
             preparedStatement.setString(4, trailer);
             preparedStatement.setString(5, id);
             preparedStatement.executeUpdate();
-            response.sendRedirect("/moviepage?id=" + Integer.parseInt(id));
+            response.sendRedirect(request.getContextPath() +"/moviepage?id=" + Integer.parseInt(id));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -56,7 +56,7 @@ public class EditAMovieServlet extends HttpServlet {
 
         String userPseudo = (String) request.getSession().getAttribute("user");
         if (userPseudo == null || userPseudo.isEmpty()) {
-            response.sendRedirect("/");
+            response.sendRedirect(request.getContextPath() +"/");
             return;
         }
 

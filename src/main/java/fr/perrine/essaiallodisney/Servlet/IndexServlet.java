@@ -58,7 +58,7 @@ public class IndexServlet extends HttpServlet {
                     String id = String.valueOf(userModels.get(i).getId());
                     session.setAttribute("user_id", id);
                     connexion = true;
-                    response.sendRedirect("/index");
+                    response.sendRedirect(request.getContextPath() +"/index");
                 }
             }
 
