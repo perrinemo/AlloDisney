@@ -67,7 +67,7 @@
                             </div>
                             <div class="info-ser form-group row">
                                 <label class="col-4 col-form-label">Nouveau mot de passe : </label>
-                                <input type="password" name="password-edit" value="${user.password}" placeholder="Mot de passe" />
+                                <input type="password" name="password-edit" placeholder="Mot de passe" />
                             </div>
                             <div class="info-ser form-group row">
                                 <label class="col-4 col-form-label">Nouvel avatar : </label>
