@@ -127,7 +127,7 @@ public class AddAMovieServlet extends HttpServlet {
                             preparedStatement2.setString(2, urlVideo);
                             preparedStatement2.setInt(3, movieId);
                             preparedStatement2.executeUpdate();
-                            response.sendRedirect("/moviepage?id=" + movieId);
+                            response.sendRedirect(request.getContextPath() +"/moviepage?id=" + movieId);
                             return;
                         } catch (SQLException e) {
                             e.printStackTrace();
@@ -163,7 +163,7 @@ public class AddAMovieServlet extends HttpServlet {
 
         String userPseudo = (String) request.getSession().getAttribute("user");
         if (userPseudo == null || userPseudo.isEmpty()) {
-            response.sendRedirect("/");
+            response.sendRedirect(request.getContextPath() +"/");
             return;
         }
 

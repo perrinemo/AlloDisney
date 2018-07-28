@@ -58,7 +58,7 @@ public class ProfilServlet extends HttpServlet {
                 preparedStatement.setString(4, id);
                 preparedStatement.executeUpdate();
 
-                response.sendRedirect("/profil?id=" + Integer.parseInt(id));
+                response.sendRedirect(request.getContextPath() +"/profil?id=" + Integer.parseInt(id));
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -83,7 +83,7 @@ public class ProfilServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userPseudo = (String) request.getSession().getAttribute("user");
         if (userPseudo == null || userPseudo.isEmpty()) {
-            response.sendRedirect("/");
+            response.sendRedirect(request.getContextPath() +"/");
             return;
         }
 

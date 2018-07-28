@@ -11,8 +11,8 @@
 <html>
     <head>
         <jsp:include page="head.jsp"/>
-        <link rel="stylesheet" type="text/css" href="css/slider.css" />
-        <link rel="stylesheet" type="text/css" href="css/homepage.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/slider.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/homepage.css" />
     </head>
 
     <body>

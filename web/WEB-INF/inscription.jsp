@@ -11,7 +11,7 @@
 <html>
     <head>
         <jsp:include page="head.jsp"/>
-        <link rel="stylesheet" type="text/css" href="css/inscription.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/inscription.css" />
     </head>
 
     <body>

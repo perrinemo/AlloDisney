@@ -11,7 +11,7 @@
 <html>
     <head>
         <jsp:include page="head.jsp"/>
-        <link rel="stylesheet" type="text/css" href="css/addamovie.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/addamovie.css" />
     </head>
 
     <body>

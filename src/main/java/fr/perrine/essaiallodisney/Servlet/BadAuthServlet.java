@@ -47,7 +47,7 @@ public class BadAuthServlet extends HttpServlet {
                 if (pseudoConnexion.equals(userModels.get(i).getPseudo()) &&
                         passwordConnexion.equals(userModels.get(i).getPassword())) {
                     session.setAttribute("user", pseudoConnexion);
-                    response.sendRedirect("/index");
+                    response.sendRedirect(request.getContextPath() +"/index");
                 }
             }
 
