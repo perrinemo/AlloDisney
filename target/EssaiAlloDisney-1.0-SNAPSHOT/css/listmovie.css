@@ -1,0 +1,21 @@
+/****************** LIST MOVIE *****************/
+.listmovie {
+    text-align: center;
+    padding: 0;
+}
+
+.listmovie a {
+    color: black;
+}
+
+.listmovie a:hover {
+    color: darkmagenta;
+}
+
+.listmovie li {
+    font-size: 20px;
+}
+
+.titlelist {
+    margin: 50px 0 30px;
+}

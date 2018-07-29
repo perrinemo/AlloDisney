@@ -1,0 +1,18 @@
+@font-face {
+    font-family: Disney;
+    src: url("../fonts/waltograph42.otf");
+}
+
+/****************** INSCRIPTION ****************/
+.inscription {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.inscription h2 {
+    margin-bottom: 20px;
+}
+
+#inscrit {
+    text-align: right;
+}
