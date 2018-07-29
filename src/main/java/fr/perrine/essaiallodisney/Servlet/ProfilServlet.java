@@ -1,5 +1,6 @@
 package fr.perrine.essaiallodisney.Servlet;
 
+import fr.perrine.essaiallodisney.Helper.FilenameHelper;
 import fr.perrine.essaiallodisney.Helper.HashPassHelper;
 import fr.perrine.essaiallodisney.Model.MovieModel;
 import fr.perrine.essaiallodisney.Model.UserModel;
@@ -34,7 +35,7 @@ public class ProfilServlet extends HttpServlet {
         String path = request.getSession().getServletContext().getRealPath("/img");
         new File(path).mkdirs();
         final Part filePart = request.getPart("avatar-edit");
-        final String avatar = getFileName(filePart);
+        final String avatar = FilenameHelper.getFileName(filePart);
         OutputStream out = null;
         InputStream filecontent = null;
         final PrintWriter writer = response.getWriter();
@@ -169,16 +170,5 @@ public class ProfilServlet extends HttpServlet {
         }
 
         this.getServletContext().getRequestDispatcher("/WEB-INF/profil.jsp").forward(request, response);
-    }
-
-    private String getFileName(final Part part) {
-        final String partHeader = part.getHeader("content-disposition");
-        LOGGER.log(Level.INFO, "Part Header = {0}", partHeader);
-        for (String content : part.getHeader("content-disposition").split(";")) {
-            if (content.trim().startsWith("filename")) {
-                return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
-            }
-        }
-        return null;
     }
 }
