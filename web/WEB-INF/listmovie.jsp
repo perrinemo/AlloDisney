@@ -10,12 +10,12 @@
 
 <html>
     <head>
-        <jsp:include page="head.jsp"/>
+        <jsp:include page="/WEB-INF/head.jsp"/>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/listmovie.css" />
     </head>
 
     <body>
-        <jsp:include page="header.jsp"/>
+        <jsp:include page="/WEB-INF/header.jsp"/>
 
         <h1 class="titlelist">Liste des films
             <small>(${requestScope.nbMovies})</small>
@@ -27,6 +27,6 @@
         </c:forEach>
         </ul>
 
-        <jsp:include page="footer.jsp"/>
+        <jsp:include page="/WEB-INF/footer.jsp"/>
     </body>
 </html>

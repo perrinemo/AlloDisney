@@ -10,12 +10,12 @@
 
 <html>
     <head>
-        <jsp:include page="head.jsp"/>
+        <jsp:include page="/WEB-INF/head.jsp"/>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/profil.css" />
     </head>
 
     <body>
-        <jsp:include page="header.jsp"/>
+        <jsp:include page="/WEB-INF/header.jsp"/>
 
         <div class="content col-10 col-lg-6 profil">
             <h1>Mon profil</h1>
@@ -83,6 +83,6 @@
 
 
 
-        <jsp:include page="footer.jsp" />
+        <jsp:include page="/WEB-INF/footer.jsp" />
     </body>
 </html>

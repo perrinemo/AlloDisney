@@ -10,7 +10,7 @@
 
 <html>
     <head>
-        <jsp:include page="head.jsp"/>
+        <jsp:include page="/WEB-INF/head.jsp"/>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/inscription.css" />
     </head>
 
@@ -39,6 +39,6 @@
             </form>
         </div>
 
-        <jsp:include page="footer.jsp"/>
+        <jsp:include page="/WEB-INF/footer.jsp"/>
     </body>
 </html>

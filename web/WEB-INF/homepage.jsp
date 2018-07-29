@@ -10,7 +10,7 @@
 
 <html>
     <head>
-        <jsp:include page="head.jsp"/>
+        <jsp:include page="/WEB-INF/head.jsp"/>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/slider.css" />
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/homepage.css" />
     </head>
@@ -48,6 +48,6 @@
         </div>
     </div>
 
-    <jsp:include page="footer.jsp" />
+    <jsp:include page="/WEB-INF/footer.jsp" />
 </body>
 </html>

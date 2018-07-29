@@ -16,15 +16,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SingletonBDD {
+    private final static long CONNECTION_TIMOUT = 10 * 60 * 1000; // ten minuts
     private static SingletonBDD INSTANCE = null;
     private Connection mConnection = null;
+    private long mConnectionTime = 0;
 
     private SingletonBDD(ServletContext context) {
         initConnection(context);
     }
 
     public static SingletonBDD getInstance(ServletContext context) {
-        if (INSTANCE == null) {
+
+        long currentTime = System.currentTimeMillis();
+        if (INSTANCE == null || (currentTime - INSTANCE.mConnectionTime > CONNECTION_TIMOUT)) {
             INSTANCE = new SingletonBDD(context);
         }
         return INSTANCE;
@@ -42,7 +46,8 @@ public class SingletonBDD {
             driverClass = Class.forName("com.mysql.jdbc.Driver");
             Driver driver = (Driver) driverClass.newInstance();
             DriverManager.registerDriver(driver);
-            mConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/disney?useUnicode=true&amp;characterEncoding=utf8", "root", mdp);
+            mConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/disney?useUnicode=true&amp;characterEncoding=utf8", "wcs", mdp);
+            mConnectionTime = System.currentTimeMillis();
         } catch (IllegalAccessException | InstantiationException | SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

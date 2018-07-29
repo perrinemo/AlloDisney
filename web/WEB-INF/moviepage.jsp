@@ -10,7 +10,7 @@
 
 <html>
     <head>
-        <jsp:include page="head.jsp" />
+        <jsp:include page="/WEB-INF/head.jsp" />
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/moviepage.css" />
     </head>
 
@@ -71,6 +71,6 @@
             </c:forEach>
         </div>
 
-        <jsp:include page="footer.jsp" />
+        <jsp:include page="/WEB-INF/footer.jsp" />
     </body>
 </html>
