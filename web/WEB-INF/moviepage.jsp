@@ -23,11 +23,16 @@
                     <p class="editMovie">
                         <small>
                             <a href="${pageContext.request.contextPath}/editamovie?id=${movie.id}">
-                                Modifier
+                                Modifier les infos
+                            </a>
+                             /
+                            <a href="${pageContext.request.contextPath}/editmovieimage?id=${movie.id}">
+                                Changer l'affiche
                             </a>
                         </small>
                     </p>
                 </c:if>
+
                 <div class="container movie-content">
                     <div class="image">
                         <img src="${pageContext.request.contextPath}/img/${movie.image}" alt="${movie.title}" />

@@ -1,6 +1,7 @@
 package fr.perrine.essaiallodisney.Servlet;
 
 import com.mysql.jdbc.PreparedStatement;
+import fr.perrine.essaiallodisney.Helper.RedirectHelper;
 import fr.perrine.essaiallodisney.Model.MovieModel;
 import fr.perrine.essaiallodisney.Model.SongModel;
 import fr.perrine.essaiallodisney.Singleton.SingletonBDD;
@@ -54,11 +55,7 @@ public class EditAMovieServlet extends HttpServlet {
         bdd.getAMovie(request, response);
         bdd.getAvatar(request, response);
 
-        String userPseudo = (String) request.getSession().getAttribute("user");
-        if (userPseudo == null || userPseudo.isEmpty()) {
-            response.sendRedirect(request.getContextPath() +"/");
-            return;
-        }
+        RedirectHelper.redirect(request, response);
 
         this.getServletContext().getRequestDispatcher("/WEB-INF/editamovie.jsp").forward(request, response);
     }

@@ -1,5 +1,7 @@
 package fr.perrine.essaiallodisney.Servlet;
 
+import fr.perrine.essaiallodisney.Helper.FilenameHelper;
+import fr.perrine.essaiallodisney.Helper.RedirectHelper;
 import fr.perrine.essaiallodisney.Singleton.SingletonBDD;
 
 import javax.servlet.ServletException;
@@ -58,7 +60,7 @@ public class AddAMovieServlet extends HttpServlet {
         String path = request.getSession().getServletContext().getRealPath("/img");
         new File(path).mkdirs();
         final Part filePart = request.getPart("file");
-        final String filename = getFileName(filePart);
+        final String filename = FilenameHelper.getFileName(filePart);
         OutputStream out = null;
         InputStream filecontent = null;
         final PrintWriter writer = response.getWriter();
@@ -161,23 +163,8 @@ public class AddAMovieServlet extends HttpServlet {
         SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
         bdd.getAvatar(request, response);
 
-        String userPseudo = (String) request.getSession().getAttribute("user");
-        if (userPseudo == null || userPseudo.isEmpty()) {
-            response.sendRedirect(request.getContextPath() +"/");
-            return;
-        }
+        RedirectHelper.redirect(request, response);
 
         this.getServletContext().getRequestDispatcher("/WEB-INF/addamovie.jsp").forward(request, response);
-    }
-
-    private String getFileName(final Part part) {
-        final String partHeader = part.getHeader("content-disposition");
-        LOGGER.log(Level.INFO, "Part Header = {0}", partHeader);
-        for (String content : part.getHeader("content-disposition").split(";")) {
-            if (content.trim().startsWith("filename")) {
-                return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
-            }
-        }
-        return null;
     }
 }
