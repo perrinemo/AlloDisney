@@ -52,11 +52,10 @@ public class ProfilServlet extends HttpServlet {
 
             try {
                 com.mysql.jdbc.PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
-                        .prepareStatement("UPDATE users SET pseudo = ?, password = ?, avatar = ? WHERE id = ?");
+                        .prepareStatement("UPDATE users SET pseudo = ?, avatar = ? WHERE id = ?");
                 preparedStatement.setString(1, pseudo);
-                preparedStatement.setString(2, HashPassHelper.hashPass(password));
-                preparedStatement.setString(3, avatar);
-                preparedStatement.setString(4, id);
+                preparedStatement.setString(2, avatar);
+                preparedStatement.setString(3, id);
                 preparedStatement.executeUpdate();
 
                 response.sendRedirect(request.getContextPath() +"/profil?id=" + Integer.parseInt(id));
