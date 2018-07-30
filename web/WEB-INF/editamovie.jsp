@@ -50,6 +50,9 @@
                 <form method="post" action="${pageContext.request.contextPath}/editamovie">
                     <input type="hidden" name="id" value="${movie.id}" />
                     <div class="form-group">
+                        <input type="text" class="form-control" required placeholder="ex : Le Roi Lion" value="${movie.title}" name="title" />
+                    </div>
+                    <div class="form-group">
                         <input type="text" class="form-control" required placeholder="ex : 1h27" value="${movie.duration}" name="duration" />
                     </div>
                     <div class="form-group">

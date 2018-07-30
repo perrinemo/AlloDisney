@@ -14,7 +14,7 @@
 
     <body>
         <jsp:include page="/WEB-INF/header.jsp"/>
-        <div class="col-5 content mx-auto" style="margin-top: 50px">
+        <div class="col-10 col-lg-4 content mx-auto" style="margin-top: 50px">
             <div class="modal-body">
                 <h1 id="title-popup">Se connecter à AlloDisney</h1>
                 <form method="post" action="${pageContext.request.contextPath}/badauth">

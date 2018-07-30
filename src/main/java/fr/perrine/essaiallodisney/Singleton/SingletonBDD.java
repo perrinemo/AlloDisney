@@ -103,6 +103,7 @@ public class SingletonBDD {
                 SongModel song = new SongModel();
                 song.setTitle(resultSet.getString("title_song"));
                 song.setVideo(resultSet.getString("video_song"));
+                song.setId(resultSet.getInt("id"));
                 songs.add(song);
             }
 

@@ -21,38 +21,55 @@ public class AddMovieSongsServlet extends HttpServlet {
 
         String userId = (String) request.getSession().getAttribute("user_id");
         String id = request.getParameter("id");
+        String songId = request.getParameter("id_song");
+        String video = request.getParameter("url" + songId);
 
         Map<String, String[]> map = request.getParameterMap();
         ArrayList<String> songs = new ArrayList<>();
         ArrayList<String> url = new ArrayList<>();
 
-        for (Map.Entry<String, String[]> entry: map.entrySet()) {
-            if (entry.getKey().startsWith("song")) {
+        for (Map.Entry<String, String[]> entry : map.entrySet()) {
+            if (entry.getKey().startsWith("song[")) {
                 songs.add(entry.getValue()[0]);
             }
-            if (entry.getKey().startsWith("url")) {
+            if (entry.getKey().startsWith("url[")) {
                 url.add(entry.getValue()[0]);
             }
         }
 
-        for (int i = 0; i < songs.size(); i++) {
-            String newSong = songs.get(i);
-            String newUrl = "";
-            if (!url.get(i).isEmpty()) {
-                newUrl = url.get(i);
-            } else {
-                newUrl = null;
-            }
+        if (songs.size() >  1) {
+            for (int i = 0; i < songs.size(); i++) {
+                String newSong = songs.get(i);
+                String newUrl = "";
+                if (!url.get(i).isEmpty()) {
+                    newUrl = url.get(i);
+                } else {
+                    newUrl = null;
+                }
 
+                try {
+                    PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
+                            .prepareStatement("INSERT INTO songs VALUES(null, ?, ?, ?)");
+                    preparedStatement.setString(1, newSong);
+                    preparedStatement.setString(2, newUrl);
+                    preparedStatement.setInt(3, Integer.parseInt(id));
+                    preparedStatement.executeUpdate();
+                    response.sendRedirect(request.getContextPath() + "/moviepage?id=" + id);
+                    return;
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        if (video != null || !video.isEmpty()) {
             try {
                 PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
-                        .prepareStatement("INSERT INTO songs VALUES(null, ?, ?, ?)");
-                preparedStatement.setString(1, newSong);
-                preparedStatement.setString(2, newUrl);
-                preparedStatement.setInt(3, Integer.parseInt(id));
+                        .prepareStatement("UPDATE songs SET video_song = ? WHERE id = ?");
+                preparedStatement.setString(1, video);
+                preparedStatement.setString(2, id);
                 preparedStatement.executeUpdate();
-                response.sendRedirect(request.getContextPath() +"/moviepage?id=" + id);
-                return;
+                response.sendRedirect(request.getContextPath() +"/moviepage?id=" + Integer.parseInt(id));
             } catch (SQLException e) {
                 e.printStackTrace();
             }

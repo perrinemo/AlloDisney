@@ -17,7 +17,7 @@
     <body>
         <jsp:include page="/WEB-INF/header.jsp" />
 
-        <div class="col-4 mx-auto inscription content">
+        <div class="col-10 col-lg-4 mx-auto inscription content">
             <h1>Je m'inscris :</h1>
             <form method="post" action="${pageContext.request.contextPath}/inscription">
                 <div class="form-group">

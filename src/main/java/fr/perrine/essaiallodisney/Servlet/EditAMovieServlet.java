@@ -24,6 +24,7 @@ public class EditAMovieServlet extends HttpServlet {
         SingletonBDD bdd = SingletonBDD.getInstance(getServletContext());
 
         String id = request.getParameter("id");
+        String title = request.getParameter("title");
         String duration = request.getParameter("duration");
         String year = request.getParameter("year");
         String resume = request.getParameter("resume");
@@ -37,12 +38,13 @@ public class EditAMovieServlet extends HttpServlet {
 
         try {
             java.sql.PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
-                    .prepareStatement("UPDATE movies SET year = ?, duration = ?, resume = ?, trailer = ? WHERE id = ?");
-            preparedStatement.setString(1, year);
-            preparedStatement.setString(2, duration);
-            preparedStatement.setString(3, resume);
-            preparedStatement.setString(4, trailer);
-            preparedStatement.setString(5, id);
+                    .prepareStatement("UPDATE movies SET title = ?, year = ?, duration = ?, resume = ?, trailer = ? WHERE id = ?");
+            preparedStatement.setString(1, title);
+            preparedStatement.setString(2, year);
+            preparedStatement.setString(3, duration);
+            preparedStatement.setString(4, resume);
+            preparedStatement.setString(5, trailer);
+            preparedStatement.setString(6, id);
             preparedStatement.executeUpdate();
             response.sendRedirect(request.getContextPath() +"/moviepage?id=" + Integer.parseInt(id));
         } catch (SQLException e) {

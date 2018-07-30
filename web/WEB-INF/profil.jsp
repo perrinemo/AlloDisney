@@ -66,10 +66,6 @@
                                 <input type="text" name="pseudo-edit" value="${user.pseudo}" placeholder="Pseudo" />
                             </div>
                             <div class="info-ser form-group row">
-                                <label class="col-4 col-form-label">Nouveau mot de passe : </label>
-                                <input type="password" name="password-edit" placeholder="Mot de passe" />
-                            </div>
-                            <div class="info-ser form-group row">
                                 <label class="col-4 col-form-label">Nouvel avatar : </label>
                                 <input type="file" name="avatar-edit" class="input-file" value="${user.avatar}" />
                             </div>
@@ -80,8 +76,6 @@
                 </c:forEach>
             </div>
         </div>
-
-
 
         <jsp:include page="/WEB-INF/footer.jsp" />
     </body>

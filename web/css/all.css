@@ -38,11 +38,3 @@ li {
     color: red;
     margin-top: 20px;
 }
-
-/****************** MEDIA QUERIES **************/
-@media screen and (max-width: 980px) {
-    .vignette {
-        width: 80%;
-        margin: 0 auto 20px;
-    }
-}

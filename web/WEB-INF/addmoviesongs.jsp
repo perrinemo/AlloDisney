@@ -20,6 +20,17 @@
                 <h1>${movie.title}</h1>
                 <form method="post" action="${pageContext.request.contextPath}/addmoviesongs">
                     <input type="hidden" name="id" value="${movie.id}" />
+                    <c:forEach items="${requestScope.songs}" var="song">
+                        <div class="form-group form-inline">
+                            <div class="input-group col-12 new-song">
+                                    <label class="col-6 col-form-label">${song.title} </label>
+                                    <input type="text" class="form-control col-6 song" placeholder="Lien youtube (optionnel)"
+                                           value="${song.video}" name="url${song.id}"/>
+
+                                <input type="hidden" name="id_song" value="${song.id}" />
+                            </div>
+                        </div>
+                    </c:forEach>
                     <div class="form-group form-inline">
                         <div class="input-group col-10 new-song">
                             <input type="text" class="form-control col-6 song" placeholder="Ajouter une chanson (optionnel)"
