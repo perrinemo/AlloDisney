@@ -30,7 +30,6 @@ public class ProfilServlet extends HttpServlet {
 
         String id = request.getParameter("id-edit");
         String pseudo = request.getParameter("pseudo-edit");
-        String password = request.getParameter("password-edit");
 
         String path = request.getSession().getServletContext().getRealPath("/img");
         new File(path).mkdirs();
