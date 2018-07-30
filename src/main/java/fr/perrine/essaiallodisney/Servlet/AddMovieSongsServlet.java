@@ -37,39 +37,24 @@ public class AddMovieSongsServlet extends HttpServlet {
             }
         }
 
-        if (songs.size() >  1) {
-            for (int i = 0; i < songs.size(); i++) {
-                String newSong = songs.get(i);
-                String newUrl = "";
-                if (!url.get(i).isEmpty()) {
-                    newUrl = url.get(i);
-                } else {
-                    newUrl = null;
-                }
-
-                try {
-                    PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
-                            .prepareStatement("INSERT INTO songs VALUES(null, ?, ?, ?)");
-                    preparedStatement.setString(1, newSong);
-                    preparedStatement.setString(2, newUrl);
-                    preparedStatement.setInt(3, Integer.parseInt(id));
-                    preparedStatement.executeUpdate();
-                    response.sendRedirect(request.getContextPath() + "/moviepage?id=" + id);
-                    return;
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
+        for (int i = 0; i < songs.size(); i++) {
+            String newSong = songs.get(i);
+            String newUrl = "";
+            if (!url.get(i).isEmpty()) {
+                newUrl = url.get(i);
+            } else {
+                newUrl = null;
             }
-        }
 
-        if (video != null || !video.isEmpty()) {
             try {
                 PreparedStatement preparedStatement = (com.mysql.jdbc.PreparedStatement) bdd.getConnection()
-                        .prepareStatement("UPDATE songs SET video_song = ? WHERE id = ?");
-                preparedStatement.setString(1, video);
-                preparedStatement.setString(2, id);
+                        .prepareStatement("INSERT INTO songs VALUES(null, ?, ?, ?)");
+                preparedStatement.setString(1, newSong);
+                preparedStatement.setString(2, newUrl);
+                preparedStatement.setInt(3, Integer.parseInt(id));
                 preparedStatement.executeUpdate();
-                response.sendRedirect(request.getContextPath() +"/moviepage?id=" + Integer.parseInt(id));
+                response.sendRedirect(request.getContextPath() + "/moviepage?id=" + id);
+                return;
             } catch (SQLException e) {
                 e.printStackTrace();
             }
