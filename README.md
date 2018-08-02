@@ -11,6 +11,6 @@ One interface for 2 types of users:
 AlloDisney was realized in July 2018 at the Wild Code School of Toulouse.
 
 ### Language used and Environment
-* Java
+* JEE
 * Intellij Idea
 * MySql
