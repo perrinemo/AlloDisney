@@ -29,10 +29,12 @@
                             <a href="${pageContext.request.contextPath}/editmovieimage?id=${movie.id}">
                                 Changer l'affiche
                             </a>
+                            <!--
                              /
                             <a href="${pageContext.request.contextPath}/addmoviesongs?id=${movie.id}">
                                 Ajouter des chansons
                             </a>
+                            -->
                         </small>
                     </p>
                 </c:if>
