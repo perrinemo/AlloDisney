@@ -39,11 +39,11 @@
                     </p>
                 </c:if>
 
-                <div class="container movie-content">
-                    <div class="image">
+                <div class="container movie-content row">
+                    <div class="image col-md-6 col-12">
                         <img src="${pageContext.request.contextPath}/img/${movie.image}" alt="${movie.title}" />
                     </div>
-                    <div class="infos">
+                    <div class="infos col-md-6 col-12">
                         <p><span>Durée : </span>${movie.duration}</p>
                         <p><span>Année de sortie : </span>${movie.year}</p>
                         <p>

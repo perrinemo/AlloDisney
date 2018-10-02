@@ -22,7 +22,7 @@
         </h1>
 
         <ul class="content listmovie">
-            <li class="year">2010 à aujourd'hui</li>
+            <li><strong>2010 à aujourd'hui</strong></li>
             <c:forEach items="${requestScope.listMovie}" var="movie">
                 <c:if test="${movie.year >= 2010}">
                     <li><a href="${pageContext.request.contextPath}/moviepage?id=${movie.id}">${movie.title} (${movie.year})</a></li>
@@ -30,7 +30,7 @@
             </c:forEach>
         </ul>
         <ul class="content listmovie">
-            <li class="year">2000 à 2009</li>
+            <li><strong>2000 à 2009</strong></li>
             <c:forEach items="${requestScope.listMovie}" var="movie">
                 <c:if test="${movie.year >= 2000 && movie.year < 2010}">
                     <li><a href="${pageContext.request.contextPath}/moviepage?id=${movie.id}">${movie.title} (${movie.year})</a></li>
@@ -39,7 +39,7 @@
         </ul>
 
         <ul class="content listmovie">
-            <li class="year">1990 à 1999</li>
+            <li><strong>1990 à 1999</strong></li>
             <c:forEach items="${requestScope.listMovie}" var="movie">
                 <c:if test="${movie.year >= 1990 && movie.year < 2000}">
                     <li><a href="${pageContext.request.contextPath}/moviepage?id=${movie.id}">${movie.title} (${movie.year})</a></li>
@@ -48,7 +48,16 @@
         </ul>
 
         <ul class="content listmovie">
-            <li class="year">1970 à 1979</li>
+            <li><strong>1980 à 1989</strong></li>
+            <c:forEach items="${requestScope.listMovie}" var="movie">
+                <c:if test="${movie.year >= 1980 && movie.year < 1990}">
+                    <li><a href="${pageContext.request.contextPath}/moviepage?id=${movie.id}">${movie.title} (${movie.year})</a></li>
+                </c:if>
+            </c:forEach>
+        </ul>
+
+        <ul class="content listmovie">
+            <li><strong>1970 à 1979</strong></li>
             <c:forEach items="${requestScope.listMovie}" var="movie">
                 <c:if test="${movie.year >= 1970 && movie.year < 1980}">
                     <li><a href="${pageContext.request.contextPath}/moviepage?id=${movie.id}">${movie.title} (${movie.year})</a></li>
@@ -57,7 +66,7 @@
         </ul>
 
         <ul class="content listmovie">
-            <li class="year">1960 à 1969</li>
+            <li><strong>1960 à 1969</strong></li>
             <c:forEach items="${requestScope.listMovie}" var="movie">
                 <c:if test="${movie.year >= 1960 && movie.year < 1970}">
                     <li><a href="${pageContext.request.contextPath}/moviepage?id=${movie.id}">${movie.title} (${movie.year})</a></li>
@@ -66,7 +75,7 @@
         </ul>
 
         <ul class="content listmovie">
-            <li class="year">1950 à 1959</li>
+            <li><strong>1950 à 1959</strong></li>
             <c:forEach items="${requestScope.listMovie}" var="movie">
                 <c:if test="${movie.year >= 1950 && movie.year < 1960}">
                     <li><a href="${pageContext.request.contextPath}/moviepage?id=${movie.id}">${movie.title} (${movie.year})</a></li>
@@ -75,7 +84,7 @@
         </ul>
 
         <ul class="content listmovie">
-            <li class="year">1940 à 1949</li>
+            <li><strong>1940 à 1949</strong></li>
             <c:forEach items="${requestScope.listMovie}" var="movie">
                 <c:if test="${movie.year >= 1940 && movie.year < 1950}">
                     <li><a href="${pageContext.request.contextPath}/moviepage?id=${movie.id}">${movie.title} (${movie.year})</a></li>
@@ -84,7 +93,7 @@
         </ul>
 
         <ul class="content listmovie">
-            <li class="year">1930 à 1939</li>
+            <li><strong>1930 à 1939</strong></li>
             <c:forEach items="${requestScope.listMovie}" var="movie">
                 <c:if test="${movie.year >= 1930 && movie.year < 1940}">
                     <li><a href="${pageContext.request.contextPath}/moviepage?id=${movie.id}">${movie.title} (${movie.year})</a></li>

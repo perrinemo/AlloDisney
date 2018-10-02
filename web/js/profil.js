@@ -10,5 +10,5 @@ btnEdit.onclick = function () {
 
 cancel.onclick = function () {
     edit.style.display = "none";
-    profil.style.display = "block";
+    profil.style.display = "flex";
 }

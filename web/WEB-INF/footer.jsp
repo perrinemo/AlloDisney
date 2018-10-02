@@ -8,9 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <footer class="footer">
     <div class="container">
-        <i class="far fa-copyright"></i>
-        AlloDisney 2018
-        <span class="reseaux">
+        <p>
+            <i class="far fa-copyright"></i>
+            AlloDisney 2018
+            <span class="reseaux">
             <a href="https://fr-fr.facebook.com/disneyfrance/"><i class="fab fa-facebook-f"></i></a>
             <a href="https://twitter.com/disneyfr"><i class="fab fa-twitter"></i></a>
             <a href="https://www.pinterest.com/disneyfrance"><i class="fab fa-pinterest-p"></i></a>
@@ -18,6 +19,8 @@
             <a href="https://www.youtube.com/user/waltdisneystudiosfr"><i class="fab fa-youtube"></i></a>
         </span>
     </div>
+        </p>
+
 </footer>
 
 <script type="text/javascript" src="js/popup.js"></script>

@@ -38,3 +38,10 @@ li {
     color: red;
     margin-top: 20px;
 }
+
+/****************** MEDIA QUERIES **************/
+@media screen and (max-device-width: 480px){
+    .content {
+        height: 100%;
+    }
+}

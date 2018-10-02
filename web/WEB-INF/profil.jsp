@@ -17,16 +17,16 @@
     <body>
         <jsp:include page="/WEB-INF/header.jsp"/>
 
-        <div class="content col-10 col-lg-6 profil">
+        <div class="content mx-auto col-12 col-lg-6 profil">
             <h1>Mon profil</h1>
             <p class="deconnexion"><small>
                 <a href="#" id="edit">Modifier</a> /
                 <a href="${pageContext.request.contextPath}/deconnexion">Se déconnecter</a>
             </small></p>
 
-            <div class="profil-content mx-auto" id="profil">
+            <div class="profil-content mx-auto row" id="profil">
                 <c:forEach items="${requestScope.users}" var="user">
-                    <div class="avatar">
+                    <div class="avatar col-md-4 col-12">
                         <c:choose>
                             <c:when test="${empty user.avatar}">
                                 <img src="img/avatar.png" width="150px" height="auto" />
@@ -36,7 +36,7 @@
                             </c:otherwise>
                         </c:choose>
                     </div>
-                    <div class="info-user">
+                    <div class="info-user col-md-8 col-12">
                         <p>Pseudo : <strong>${user.pseudo}</strong></p>
                         <p>Nombre de films ajoutés : <strong>${requestScope.nbMovie}</strong></p>
                         <c:forEach items="${requestScope.lastmovie}" var="lastmovie">
@@ -46,10 +46,10 @@
                 </c:forEach>
             </div>
 
-            <div class="profil-edit" id="edit-profil">
+            <div class="profil-edit mx-auto row" id="edit-profil">
                 <c:forEach items="${requestScope.users}" var="user">
-                    <form method="post" action="${pageContext.request.contextPath}/profil" enctype="multipart/form-data">
-                        <div class="avatar">
+                    <form method="post" action="${pageContext.request.contextPath}/profil" enctype="multipart/form-data" class="row">
+                        <div class="avatar col-md-4 col-12">
                             <c:choose>
                                 <c:when test="${empty user.avatar}">
                                     <img src="img/avatar.png" width="150px" height="auto" />
@@ -59,19 +59,20 @@
                                 </c:otherwise>
                             </c:choose>
                         </div>
-                        <div class="form-edit">
+                        <div class="form-edit col-md-8 col-12">
                             <input type="hidden" name="id-edit" value="${user.id}" />
                             <div class="info-ser form-group row">
-                                <label class="col-4 col-form-label">Pseudo : </label>
+                                <label class="col-3 col-form-label">Pseudo : </label>
                                 <input type="text" name="pseudo-edit" value="${user.pseudo}" placeholder="Pseudo" />
                             </div>
                             <div class="info-ser form-group row">
-                                <label class="col-4 col-form-label">Nouvel avatar : </label>
+                                <label class="col-3 col-form-label">Nouvel avatar : </label>
                                 <input type="file" name="avatar-edit" class="input-file" value="${user.avatar}" />
                             </div>
+
+                            <button type="button" class="btn" id="cancel">Annuler</button>
+                            <button type="submit" class="btn">Modifier</button>
                         </div>
-                        <button type="button" class="btn" id="cancel">Annuler</button>
-                        <button type="submit" class="btn">Modifier</button>
                     </form>
                 </c:forEach>
             </div>

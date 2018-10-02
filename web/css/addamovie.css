@@ -28,3 +28,11 @@
     margin-top: 10px;
     text-align: right;
 }
+
+/****************** MEDIA QUERIES **************/
+@media screen and (max-device-width: 480px) {
+    .form img {
+        width: 90%;
+        margin: 0 auto;
+    }
+}

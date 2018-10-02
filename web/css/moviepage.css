@@ -37,3 +37,28 @@
     text-align: center;
     margin-top: 25px;
 }
+
+/****************** MEDIA QUERIES **************/
+@media screen and (max-device-width: 480px) {
+    .movie-page,
+    .image {
+        padding: 0;
+    }
+
+    .movie-page .image {
+        width: auto;
+    }
+
+    .movie-content {
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .movie-page img {
+        width: 100%;
+    }
+
+    .trailer {
+        display: none;
+    }
+}

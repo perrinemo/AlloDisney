@@ -48,3 +48,21 @@ h3 {
         margin: 0 auto 20px;
     }
 }
+
+@media screen and (max-device-width: 480px){
+    #slider a img {
+        width: 100%;
+    }
+
+    #slider {
+        height: 250px;
+    }
+
+    .vignette img {
+        display: none;
+    }
+
+    .vignette {
+        height: auto;
+    }
+}

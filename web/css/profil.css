@@ -1,10 +1,5 @@
 /****************** PROFIL *********************/
 
-.avatar {
-    float: left;
-    margin-right: 30px;
-}
-
 .avatar img {
     width: 150px;
     height: 150px;
@@ -27,6 +22,7 @@ h1 {
 
 .profil-content {
     display: flex;
+    text-align: center;
 }
 
 .profil .deconnexion {
@@ -41,4 +37,11 @@ h1 {
 
 .profil-edit label {
     text-align: left;
+}
+
+/****************** MEDIA QUERIES **************/
+@media screen and (max-device-width: 480px) {
+    .avatar {
+        margin-bottom: 15px;
+    }
 }
